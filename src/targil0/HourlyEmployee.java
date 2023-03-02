@@ -3,7 +3,8 @@ package targil0;
 public class HourlyEmployee extends Employee {
 	
 	int HOURS;
-    float WAGE;
+    float WAGE; 
+   
 
     
   //constructors
