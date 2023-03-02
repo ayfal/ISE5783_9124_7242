@@ -5,6 +5,7 @@ public class HourlyEmployee extends Employee {
 	int HOURS;
     float WAGE; 
     
+    
    
 
     
