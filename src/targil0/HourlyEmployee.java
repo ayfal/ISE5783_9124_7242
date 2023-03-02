@@ -7,8 +7,6 @@ public class HourlyEmployee extends Employee {
     
     
    
-
-    
   //constructors
     HourlyEmployee() { this("plony","almony",0,0,0);}
 
