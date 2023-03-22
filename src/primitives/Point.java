@@ -7,7 +7,7 @@ import java.util.Objects;
 * 3-Dimensional coordinate system.
 * @author Ariel David and Moshe
 */
-public class Point {
+public class Point { 
 	
 	final Double3 point;
 

@@ -26,7 +26,7 @@ public class Vector extends Point {
 	         return false;
 	      return this.point.equals(other.point);
 	   }
-	
+	 
 	
 	public Vector add(Vector v) { return new Vector(this.point.add(v.point)); }
 	

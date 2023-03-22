@@ -5,7 +5,7 @@ package primitives;
 * @author Ariel David and Moshe
 */
 
-public class Ray {
+public class Ray { 
 
 	final Point p0;
 	

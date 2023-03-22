@@ -48,7 +48,7 @@ public final class Main {
          out.println("ERROR: Point - Point does not work correctly");
       if (!v1.subtract(v2).equals(new Vector(3, 6, 9)))
          out.println("ERROR: Point - Point does not work correctly");
-
+ 
       // test Dot-Product
       if (!isZero(v1.dotProduct(v3)))
          out.println("ERROR: dotProduct() for orthogonal vectors is not zero");
