@@ -23,11 +23,11 @@ public class Point {
     //functions
     
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(Object obj) { 
        if (this == obj) return true;
        if (!(obj instanceof Point other))
   	         return false;
-  	      return this.point.equals(other.point);
+  	      return this.point.equals(other.point); 
     }
     
     public double distanceSquared(Point other) {
