@@ -1,5 +1,7 @@
 package primitives;
 
+import static primitives.Util.isZero;
+
 import java.util.Objects;
 
 /**
@@ -19,6 +21,14 @@ public class Point {
     }
     
     //functions
+    
+    @Override
+    public boolean equals(Object obj) {
+       if (this == obj) return true;
+       if (!(obj instanceof Point other))
+  	         return false;
+  	      return this.point.equals(other.point);
+    }
     
     public double distanceSquared(Point other) {
     	
