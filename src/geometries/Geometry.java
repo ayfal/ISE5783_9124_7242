@@ -5,5 +5,5 @@ import primitives.Vector;
 
 public interface Geometry {
 	
-   Vector gerNormal(Point p);
+   Vector getNormal(Point p);
 }
