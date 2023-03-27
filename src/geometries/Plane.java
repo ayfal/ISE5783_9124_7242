@@ -9,7 +9,7 @@ import primitives.Vector;
  * 
  * @author Ariel David and Moshe
  */
-
+ 
 public class Plane {
 
 	private final Point p0;

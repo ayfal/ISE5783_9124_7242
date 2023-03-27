@@ -13,7 +13,7 @@ public class Tube extends RadialGeometry {
 		super(radius);
 		this.axis = ax;
 	}
-
+ 
 	// getters
 	public Ray getAxis() {
 		return axis;

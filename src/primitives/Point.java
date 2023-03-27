@@ -8,7 +8,7 @@ package primitives;
  */
 public class Point {
 
-	final Double3 point;
+	final Double3 point; 
 
 	// constructors
 	public Point(Double3 d) {

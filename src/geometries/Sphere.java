@@ -10,7 +10,7 @@ public class Sphere extends RadialGeometry {
 	public Sphere(double r, Point c) {
 		super(r);
 		center = c;
-	}
+	} 
 
 	// getters
 	public Point getCenter() {
