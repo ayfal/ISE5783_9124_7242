@@ -8,4 +8,4 @@ public abstract class RadialGeometry implements Geometry {
 		this.radius = r;
 	}
 }
- 
+  
