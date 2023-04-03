@@ -30,6 +30,9 @@ public class Point {
 
 	public double distanceSquared(Point other) {
 
+		if (this.equals(other))
+			return 0;
+
 		double x = this.point.d1 - other.point.d1;
 		double y = this.point.d2 - other.point.d2;
 		double z = this.point.d3 - other.point.d3;
