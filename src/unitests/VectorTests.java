@@ -5,6 +5,10 @@ package unitests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+//import static org.junit.jupiter.api.Assertions.fail;
+
 import org.junit.jupiter.api.Test;
 
 import primitives.Double3;
@@ -25,11 +29,11 @@ class VectorTests {
 	void testVectorDoubleDoubleDouble() {
 		// =============== Boundary Values Tests ==================
 		// TC01: a constructor test to check if the "vector zero" throws an exception.
-		try {
-			new Vector(0, 0, 0);
-		} catch (IllegalArgumentException e) {
-			fail(e);
-		}
+		assertThrows(IllegalArgumentException.class, () -> new Vector(0, 0, 0), //
+				"Constructed a zero vector that dosent exist");
+		/*
+		 * try { new Vector(0, 0, 0); } catch (IllegalArgumentException e) { fail(e); }
+		 */
 	}
 
 	/**
@@ -39,11 +43,12 @@ class VectorTests {
 	void testVectorDouble3() {
 		// =============== Boundary Values Tests ==================
 		// TC01: a constructor test to check if the "vector zero" throws an exception.
-		try {
-			new Vector(new Double3(0, 0, 0));
-		} catch (IllegalArgumentException e) {
-			fail(e);
-		}
+		assertThrows(IllegalArgumentException.class, () -> new Vector(new Double3(0, 0, 0)), //
+				"Constructed a zero vector that dosent exist");
+		/*
+		 * try { new Vector(new Double3(0, 0, 0)); } catch (IllegalArgumentException e)
+		 * { fail(e); }
+		 */
 	}
 
 	/**
@@ -57,11 +62,12 @@ class VectorTests {
 
 		// =============== Boundary Values Tests ==================
 		// TC02: a test to check if a boundary result of add throws an exception.
-		try {
-			new Vector(1, 1, 1).add(new Vector(-1, -1, -1));
-		} catch (IllegalArgumentException e) {
-			fail(e);
-		}
+		assertThrows(IllegalArgumentException.class, () -> new Vector(1, 1, 1).add(new Vector(-1, -1, -1)), //
+				"Created a zero vector that dosent exist");
+		/*
+		 * try { new Vector(1, 1, 1).add(new Vector(-1, -1, -1)); } catch
+		 * (IllegalArgumentException e) { fail(e); }
+		 */
 	}
 
 	/**
@@ -75,11 +81,12 @@ class VectorTests {
 
 		// =============== Boundary Values Tests ==================
 		// TC02: a test to check if a boundary result of scale throws an exception.
-		try {
-			new Vector(1, 1, 1).scale(0);
-		} catch (IllegalArgumentException e) {
-			fail(e);
-		}
+		assertThrows(IllegalArgumentException.class, () -> new Vector(1, 1, 1).scale(0), //
+				"Created a zero vector that dosent exist");
+		/*
+		 * try { new Vector(1, 1, 1).scale(0); } catch (IllegalArgumentException e) {
+		 * fail(e); }
+		 */
 	}
 
 	/**
@@ -110,19 +117,22 @@ class VectorTests {
 		// =============== Boundary Values Tests ==================
 		// TC02: a test to check if a boundary result of cross product with itself
 		// throws an exception
-		try {
-			new Vector(1, 1, 1).crossProduct(new Vector(1, 1, 1));
-		} catch (IllegalArgumentException e) {
-			fail(e);
-		}
+
+		assertThrows(IllegalArgumentException.class, () -> new Vector(1, 1, 1).crossProduct(new Vector(1, 1, 1)), //
+				"Created a zero vector that dosent exist");
+		/*
+		 * try { new Vector(1, 1, 1).crossProduct(new Vector(1, 1, 1)); } catch
+		 * (IllegalArgumentException e) { fail(e); }
+		 */
 
 		// TC03: a test to check if a boundary result of cross product with its opposite
 		// throws an exception
-		try {
-			new Vector(1, 1, 1).crossProduct(new Vector(-1, -1, -1));
-		} catch (IllegalArgumentException e) {
-			fail(e);
-		}
+		assertThrows(IllegalArgumentException.class, () -> new Vector(1, 1, 1).crossProduct(new Vector(-1, -1, -1)), //
+				"Created a zero vector that dosent exist");
+		/*
+		 * try { new Vector(1, 1, 1).crossProduct(new Vector(-1, -1, -1)); } catch
+		 * (IllegalArgumentException e) { fail(e); }
+		 */
 	}
 
 	/**
