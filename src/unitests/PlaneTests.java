@@ -46,13 +46,13 @@ class PlaneTests {
 	void testGetNormal() {
 		// ============ Equivalence Partitions Tests ==============
 		Plane plane = new Plane(new Point(1, 0, 1), new Point(3, 1, 7), new Point(2, 5, 3));
-		Vector normal = plane.getNormal();
+		Vector n = plane.getNormal();
 
 		// TC01: making sure normal length = 1 'aka' a unit vector.
-		assertEquals(1, normal.length(), 0.00000001, "Plane's normal is not a unit vector");
+		assertEquals(1, n.length(), 0.00000001, "Plane's normal is not a unit vector");
 
 		// TCO2: a simple test to check the result of the function
-		assertEquals(new Vector(-28, 2, 9).normalize(), normal, "Plane's normal is wrong");
+		assertEquals(new Vector(-28, 2, 9).normalize(), n, "Plane's normal is wrong");
 	}
 
 }

@@ -26,10 +26,10 @@ class SphereTests {
 	void testGetNormal() {
 		// ============ Equivalence Partitions Tests ==============
 		Sphere sphere = new Sphere(3, new Point(0, 0, 0));
-		Vector N = sphere.getNormal(new Point(3, 0, 0));
+		Vector n = sphere.getNormal(new Point(3, 0, 0));
 
 		// TC01: a simple test to check the result of the function
-		assertEquals(new Vector(1, 0, 0), N, "Shpere's normal is wrong");
+		assertEquals(new Vector(1, 0, 0), n, "Shpere's normal is wrong");
 	}
 
 }

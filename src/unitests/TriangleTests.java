@@ -31,10 +31,10 @@ class TriangleTests {
 		// TC01: a simple test to make sure the function does not throw an exception.
 		assertDoesNotThrow(() -> triangle.getNormal(new Point(0, 1, 0)),
 				"Triangle threw an exeption while attempting getNormal function");
-		Vector N = triangle.getNormal(new Point(0, 1, 0));
+		Vector n = triangle.getNormal(new Point(0, 1, 0));
 
 		// TC02: making sure normal length = 1 'aka' a unit vector.
-		assertEquals(1, N.length(), 0.00000001, "Triangle's normal is not a unit vector");
+		assertEquals(1, n.length(), 0.00000001, "Triangle's normal is not a unit vector");
 
 	}
 }

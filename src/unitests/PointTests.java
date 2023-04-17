@@ -25,7 +25,7 @@ class PointTests {
 	void testDistanceSquared() {
 		// ============ Equivalence Partitions Tests ==============
 		 // TC01: a simple test to check the result of the function
-		 assertEquals(6 ,new Point(1,1,1).distanceSquared(new Point(2,2,2)), "distance Squared function result is wrong");
+		 assertEquals(3 ,new Point(1,1,1).distanceSquared(new Point(2,2,2)), "distance Squared function result is wrong");
 		 
 		 // =============== Boundary Values Tests ==================
 		 //  TC02: a test to check if the distance between a point and itself is zero.
@@ -39,7 +39,7 @@ class PointTests {
 	void testDistance() {
 		// ============ Equivalence Partitions Tests ==============
 			// TC01: a simple test to check the result of the function
-		 assertEquals(3 ,new Point(1,1,1).distance(new Point(3,3,3)), "distance function result is wrong");
+		 assertEquals(1 ,new Point(0,0,0).distance(new Point(1,0,0)), "distance function result is wrong");
 	}
 
 	/**

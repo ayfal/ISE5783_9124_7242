@@ -80,7 +80,7 @@ class VectorTests {
 	void testDotProduct() {
 		// ============ Equivalence Partitions Tests ==============
 		// TC01: a simple test to check the result of the function
-		assertEquals(6, new Vector(1, 2, 3).dotProduct(new Vector(3, 2, 1)), "dot product function result is wrong");
+		assertEquals(10, new Vector(1, 2, 3).dotProduct(new Vector(3, 2, 1)), "dot product function result is wrong");
 
 		// TC02: a simple test to check the result of the function when the result is
 		// zero.
@@ -126,10 +126,10 @@ class VectorTests {
 	void testLength() {
 		// ============ Equivalence Partitions Tests ==============
 		// TC01: a simple test to check the result of the function
-		assertEquals(3, new Vector(3, 0, 0).lengthSquared(), "length function result is wrong");
+		assertEquals(3, new Vector(3, 0, 0).length(), "length function result is wrong");
 
 		// TC02: a simple test to check the result of the function
-		assertEquals(3, new Vector(-3, 0, 0).lengthSquared(), "length function result is wrong");
+		assertEquals(3, new Vector(-3, 0, 0).length(), "length function result is wrong");
 	}
 
 	/**

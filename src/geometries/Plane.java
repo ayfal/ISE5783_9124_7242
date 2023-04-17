@@ -22,11 +22,11 @@ public class Plane {
 		this.p0 = p0;
 		Vector v1 = p1.subtract(p0);
 		Vector v2 = p2.subtract(p0);
-		Vector N = v1.crossProduct(v2);
+		Vector n = v1.crossProduct(v2);
 		// if the to vectors have the same direction.
-		if (N.length() == 0)
+		if (n.length() == 0)
 			throw new IllegalArgumentException("The points are on the same line");
-		this.normal = N.normalize();
+		this.normal = n.normalize();
 	}
 
 	public Plane(Point p, Vector n) {
