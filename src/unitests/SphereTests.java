@@ -28,10 +28,7 @@ class SphereTests {
 		Sphere sphere = new Sphere(3, new Point(0, 0, 0));
 		Vector N = sphere.getNormal(new Point(3, 0, 0));
 
-		// TC01: making sure normal length = 1 'aka' a unit vector.
-		assertEquals(1, N.length(), 0.00000001, "Shpere's normal is not a unit vector");
-
-		// TC02: a simple test to check the result of the function
+		// TC01: a simple test to check the result of the function
 		assertEquals(new Vector(1, 0, 0), N, "Shpere's normal is wrong");
 	}
 

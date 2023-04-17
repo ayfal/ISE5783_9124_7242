@@ -29,9 +29,12 @@ public class Tube extends RadialGeometry {
 		Vector PP0 = p.subtract(axis.getP0());
 		double t = axis.getDir().dotProduct(PP0);
 
-		Point o = axis.getP0().add(axis.getDir().scale(t));// do i use scale?
+		if (t > 0) {
+			Point o = axis.getP0().add(axis.getDir().scale(t));
+			return p.subtract(o);
+		}
 
-		return p.subtract(o);/////////////
+		return p.subtract(axis.getP0()).normalize();
 	}
 
 }

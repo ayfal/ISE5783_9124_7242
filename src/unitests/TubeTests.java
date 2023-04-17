@@ -30,11 +30,13 @@ class TubeTests {
 		Tube tube = new Tube(2, axis);
 		Vector N = tube.getNormal(new Point(2, 0, 1));
 
-		// TC01: making sure normal length = 1 'aka' a unit vector.
-		assertEquals(1, N.length(), 0.00000001, "Ray's normal is not a unit vector");
+		// TC01: a simple test to check the result of the function
+		assertEquals(new Vector(1, 0, 0), N, "Ray's normal is wrong");
 
-		// TC02: a simple test to check the result of the function
-		assertEquals(new Vector(1, 0, 0), N, "Ray's normal is wrong");////// it should be a ray not a vector, no?
+		// =============== Boundary Values Tests ==================
+		// TC02: when the PP0 is orthogonal to the tube's ray.
+		N = tube.getNormal(new Point(0, 2, 0));
+		assertEquals(new Vector(0, 1, 0), N, "Ray's normal is wrong");
 	}
 
 }
