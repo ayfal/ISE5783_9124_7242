@@ -4,6 +4,12 @@ import primitives.Point;
 import primitives.Vector;
 import primitives.Ray;
 
+/**
+ * Class Cylinder is a class that extends Tube, representing a 3-dimensional cylinder(finite Tube) in a
+ * Cartesian 3-Dimensional coordinate system.
+ * 
+ * @author Ariel David 
+ */
 public class Cylinder extends Tube {
   
 	private final double height;

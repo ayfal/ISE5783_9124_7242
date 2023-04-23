@@ -2,6 +2,12 @@ package geometries;
 
 import primitives.*;
 
+/**
+ * Class Sphere is the basic class that extends RadialGeometry, representing a 3-dimensional sphere in a
+ * Cartesian 3-Dimensional coordinate system.
+ * 
+ * @author Ariel David 
+ */
 public class Sphere extends RadialGeometry {
 
 	private final Point center;

@@ -4,10 +4,10 @@ import primitives.Point;
 import primitives.Vector;
 
 /**
- * Class Plane is the basic class representing a … of Euclidean geometry in
+ * Class Plane is the basic class representing a two-dimensional plane in a
  * Cartesian 3-Dimensional coordinate system.
  * 
- * @author Ariel David and Moshe
+ * @author Ariel David 
  */
 
 public class Plane {

@@ -1,10 +1,17 @@
 package geometries;
 
 import primitives.Point;
+
 import primitives.Vector;
 import primitives.Ray;
 import static primitives.Util.*;
 
+/**
+ * Class Tube is the basic class that extends RadialGeometry, representing a 3-dimensional Tube(endless cylinder) in a
+ * Cartesian 3-Dimensional coordinate system.
+ * 
+ * @author Ariel David 
+ */
 public class Tube extends RadialGeometry {
 
 	protected final Ray axis;
