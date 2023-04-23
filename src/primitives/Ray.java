@@ -1,7 +1,7 @@
 package primitives;
 
 /**
- * Class Ray is the basic class representing a … of Euclidean geometry in
+ * Class Ray is the basic class representing a point and a direction in a
  * Cartesian 3-Dimensional coordinate system.
  * 
  * @author Ariel David and Moshe
@@ -13,6 +13,7 @@ public class Ray {
   
 	final Vector dir;
 
+	// constructor
 	public Ray(Point p, Vector d) {
 		d.normalize();
 
