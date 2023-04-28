@@ -10,7 +10,7 @@ import primitives.Vector;
  * @author Ariel David 
  */
 
-public class Plane {
+public class Plane implements Geometry {
 
 	private final Point p0;
 
@@ -23,14 +23,10 @@ public class Plane {
 		Vector v1 = p1.subtract(p0);
 		Vector v2 = p2.subtract(p0);
 		Vector n = v1.crossProduct(v2);
-		// if the to vectors have the same direction.
-		if (n.length() == 0)
-			throw new IllegalArgumentException("The points are on the same line");
 		this.normal = n.normalize();
 	}
 
 	public Plane(Point p, Vector n) {
-       
 		this.p0 = p;
 		this.normal = n.normalize();
 	}
@@ -45,7 +41,8 @@ public class Plane {
 		return normal;
 	}
 
-	public Vector gerNormal(Point p) {
+	@Override
+	public Vector getNormal(Point p) {
 		return normal;
 	}
 

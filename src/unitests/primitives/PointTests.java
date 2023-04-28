@@ -1,7 +1,7 @@
 /**
  * 
  */
-package unitests;
+package unitests.primitives;
 
 import static org.junit.jupiter.api.Assertions.*;
 

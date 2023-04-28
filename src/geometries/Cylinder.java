@@ -34,23 +34,19 @@ public class Cylinder extends Tube {
 		Vector dir = axis.getDir();
 		Point bottomCenter = axis.getP0();
 		Point topCenter = bottomCenter.add(dir.scale(height));
-		Vector upVector = dir.normalize();
-		Vector downVector = bottomCenter.subtract(topCenter).normalize();
+		Vector upVector = dir;
+		Vector downVector = dir.scale(-1);
 
-		if (p.equals(bottomCenter)) {
+		if (p.equals(bottomCenter))
 			return downVector;
-		}
-		if (p.equals(topCenter)) {
+		if (p.equals(topCenter))
 			return upVector;
-		}
 				
 		double t = dir.dotProduct(p.subtract(bottomCenter));
-		if (isZero(t)) {
+		if (isZero(t))
 			return downVector;
-		}
-		if (t == height) {
+		if (isZero(t - height))
 			return upVector;
-		}
 		
 		Point o = bottomCenter.add(dir.scale(t));
 		return p.subtract(o).normalize();

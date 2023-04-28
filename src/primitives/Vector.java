@@ -48,14 +48,15 @@ public class Vector extends Point {
 	}
 
 	/**
-	 * returns a scalar value:
+	 * Calculates a scalar value of dot-product operation between this vector and another vector:
 	 *  If the dot product is positive, 
 	 *    the vectors are pointing in roughly the same direction,and the angle between them is acute.
 	 *  If the dot product is negative,
 	 *    the vectors are pointing in roughly opposite directions, and the angle between them is obtuse.
 	 *  If the dot product is zero, the vectors are perpendicular to each other.
 	 * 
-	 * @author Ariel David
+	 * @param v the another vector
+	 * @return the calculation result
 	 */
 	public double dotProduct(Vector v) {
 

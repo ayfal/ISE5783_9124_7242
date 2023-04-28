@@ -15,10 +15,8 @@ public class Ray {
 
 	// constructor
 	public Ray(Point p, Vector d) {
-		d.normalize();
-
 		this.p0 = p;
-		this.dir = d;
+		this.dir = d.normalize();
 	}
 
 	// getters
