@@ -10,6 +10,10 @@ import primitives.Vector;
  * @author Ariel David 
  */
 public interface Geometry {
-	 
-   Vector getNormal(Point p);
+	/**
+	 * get normal
+	 * @param p point
+	 * @return normal
+	 */
+	Vector getNormal(Point p);
 } 

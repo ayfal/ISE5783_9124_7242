@@ -9,13 +9,23 @@ package primitives;
 public class Vector extends Point {
 
 	// constructors
-	
+	/**
+	 * constructor for a vector
+	 * @param d1 double
+	 * @param d2 double
+	 * @param d3 double
+	 * @throws IllegalArgumentException if the vector is (0,0,0)
+	 */
 	public Vector(double d1, double d2, double d3) {
 		super(d1, d2, d3);
 		if (point.equals(Double3.ZERO))
 			throw new IllegalArgumentException(" Vector(0,0,0) doesn't exist ");
 	}
 
+	/**
+	 * constructor for a vector
+	 * @param d double3
+	 */
 	public Vector(Double3 d) {
 		this(d.d1, d.d2, d.d3);
 	}
@@ -31,8 +41,10 @@ public class Vector extends Point {
 	}
 
 	/**
-	 * returns a new vector that is equal to the sum of the vectors
-	 * @author Ariel David
+	 * calculates a new vector that is equal to the addition of the two vectors.
+	 * 
+	 * @param v the other vector.
+	 * @return a new vector that is equal to the addition of this and the other vector.
 	 */
 	public Vector add(Vector v) {
 		return new Vector(this.point.add(v.point));
@@ -40,8 +52,10 @@ public class Vector extends Point {
 
 
 	/**
-	 * returns a new vector with the same direction but the length is multiplied.
-	 * @author Ariel David
+	 * calculates a new vector that is the scaled version of the original vector.
+	 * 
+	 * @param num the scale factor.
+	 * @return a new vector that is the scaled version of the original vector.
 	 */
 	public Vector scale(double num) {
 		return new Vector(this.point.scale(num));
@@ -68,12 +82,11 @@ public class Vector extends Point {
 	}
 
 	/**
-	 * returns a new vector that is perpendicular to both input vectors
-	 * defined as a vector that is perpendicular to both A and B,
-	 * with a length equal to the product of their lengths multiplied by the "sin" of the angle between them.
-	 * The direction of the resulting vector is determined by the "right hand" rule.
+	 * calculates a new vector that is perpendicular to both input vectors
 	 * 
-	 * @author Ariel David
+	 * 
+	 * @param v the other vector.
+	 * @return a new vector that is perpendicular to both input vectors.
 	 */
 	public Vector crossProduct(Vector v) {
 
@@ -85,9 +98,9 @@ public class Vector extends Point {
 	}
 
 	/**
-	 * returns the length squared of the vector.
+	 * calculates the squared length of the vector.
 	 * 
-	 * @author Ariel David
+	 * @return the squared length of the vector.
 	 */
 	public double lengthSquared() {
 
@@ -97,19 +110,18 @@ public class Vector extends Point {
 	}
 
 	/**
-	 * returns the length of the vector.
+	 * calculates the length of the vector.
 	 * 
-	 * @author Ariel David
+	 * @return the length of the vector.
 	 */
 	public double length() {
 		return Math.sqrt(this.lengthSquared());
 	}
 
 	/**
-	 * returns a new vector that has a magnitude of 1, with the same direction as the
-	 * original vector.
+	 * calculates a new vector that is equal to the normalized version of the original vector.
 	 * 
-	 * @author Ariel David
+	 * @return a new vector that is equal to the normalized version of the original vector.
 	 */
 	public Vector normalize() {
 		return new Vector(this.point.reduce(this.length()));

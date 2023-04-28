@@ -18,12 +18,22 @@ public class Cylinder extends Tube {
 	private final double height;
 
 	// constructor
+	/**
+	 * constructor for a cylinder
+	 * @param h double
+	 * @param radius double
+	 * @param axis ray
+	 */
 	public Cylinder(double h, double radius, Ray axis) {
 		super(radius, axis);
 		this.height = h;
 	}
 
 	// getter
+	/**
+	 * get height
+	 * @return height
+	 */
 	public double getHeight() {
 		return height;
 	}

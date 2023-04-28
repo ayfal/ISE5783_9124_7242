@@ -17,16 +17,29 @@ public class Tube extends RadialGeometry {
 	protected final Ray axis;
 
 	// constructor
+	/**
+	 * constructor for a tube
+	 * @param radius double
+	 * @param ax ray
+	 */
 	public Tube(double radius, Ray ax) {
 		super(radius);
 		this.axis = ax;
 	}
 
 	// getters
+	/**
+	 * get axis
+	 * @return axis
+	 */
 	public Ray getAxis() {
 		return axis;
 	}
 
+	/**
+	 * get radius
+	 * @return radius
+	 */
 	public double getRadius() {
 		return radius;
 	}

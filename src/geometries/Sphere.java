@@ -13,16 +13,29 @@ public class Sphere extends RadialGeometry {
 	private final Point center;
 
 	// constructor
+	/**
+	 * constructor for a sphere
+	 * @param r double
+	 * @param c point
+	 */
 	public Sphere(double r, Point c) {
 		super(r);
 		center = c;
 	}
 
 	// getters
+	/*
+	 * get center
+	 * @return center
+	 */
 	public Point getCenter() {
 		return center;
 	}
 
+	/*
+	 * get radius
+	 * @return radius
+	 */
 	public double getRadius() {
 		return radius;
 	}

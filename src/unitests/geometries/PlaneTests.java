@@ -52,7 +52,13 @@ class PlaneTests {
 		assertEquals(1, n.length(), 0.00000001, "Plane's normal is not a unit vector");
 
 		// TCO2: a simple test to check the result of the function
-		assertEquals(new Vector(-28, 2, 9).normalize(), n, "Plane's normal is wrong");
+		//assertEquals(new Vector(-28, 2, 9).normalize(), n, "Plane's normal is wrong");
+
+		 //check the positive and negative direction of the normal//
+		 Vector testVector=new Vector(-28, 2, 9).normalize();
+		 assertTrue(plane.getNormal().equals(testVector) ||
+		 plane.getNormal().scale(-1).equals(testVector),
+		 "ERROR: The calculation of normal to the plane is not calculated correctly");
 	}
 
 }
