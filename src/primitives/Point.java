@@ -9,7 +9,9 @@ public class Point {
 
 	final Double3 point;
 
-	// constructors
+	/**
+	 * returns the point (0,0,0).
+	 */
 	public Point(Double3 d) {
 		this(d.d1, d.d2, d.d3);
 	}
@@ -37,24 +39,30 @@ public class Point {
 	}
 
 	/**
-	 * returns the distance between two points.
-	 * @author Ariel David
+	 * calculates the distance between the two points.
+	 * 
+	 * @param other the other point.
+	 * @return the distance between this and the other point.
 	 */
 	public double distance(Point other) {
-		return Math.sqrt(this.distanceSquared(other));
+		return Math.sqrt(this.distanceSquared(other)); 
 	}
 
 	/**
-	 * returns a new point that is equal to the difference of the two points.
-	 * @author Ariel David
+	 * calculates a new vector that is equal to the subtraction of the two points.
+	 * 
+	 * @param other the other point.
+	 * @return a new vector that is equal to the subtraction of this and the other point.
 	 */
 	public Vector subtract(Point other) {
 		return new Vector(point.subtract(other.point));
 	}
 
 	/**
-	 * returns a new point that is equal to the sum of the two points.
-	 * @author Ariel David
+	 * calculates a new point that is equal to the addition of the point and the vector.
+	 * 
+	 * @param v the vector.
+	 * @return a new point that is equal to the addition of this and the vector.
 	 */
 	public Point add(Vector v) {
 		return new Point(this.point.add(v.point));
