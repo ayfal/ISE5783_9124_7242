@@ -14,16 +14,29 @@ public class Ray {
 	final Vector dir;
 
 	// constructor
+	/**
+	 * constructor for a ray
+	 * @param p point
+	 * @param d vector
+	 */
 	public Ray(Point p, Vector d) {
 		this.p0 = p;
 		this.dir = d.normalize();
 	}
 
 	// getters
+	/**
+	 * get p0
+	 * @return p0
+	 */
 	public Point getP0() {
 		return p0;
 	}
 
+	/**
+	 * get direction
+	 * @return dir
+	 */
 	public Vector getDir() {
 		return dir;
 	}

@@ -10,6 +10,11 @@ public abstract class RadialGeometry implements Geometry {
 
 	protected final double radius;
 
+	// constructor
+	/**
+	 * constructor for a radial geometry
+	 * @param r double
+	 */
 	public RadialGeometry(double r) {
 		this.radius = r;
 	}
