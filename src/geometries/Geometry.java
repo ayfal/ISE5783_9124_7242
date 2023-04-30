@@ -9,7 +9,7 @@ import primitives.Vector;
  * 
  * @author Ariel David 
  */
-public interface Geometry {
+public interface Geometry extends Intersectable {
 	/**
 	 * get normal
 	 * @param p point
