@@ -6,6 +6,8 @@ import primitives.Vector;
 import primitives.Ray;
 import static primitives.Util.*;
 
+import java.util.List;
+
 /**
  * Class Tube is the basic class that extends RadialGeometry, representing a 3-dimensional Tube(endless cylinder) in a
  * Cartesian 3-Dimensional coordinate system.
@@ -55,4 +57,9 @@ public class Tube extends RadialGeometry {
 		return p.subtract(o).normalize();
 	}
 
+	@Override
+	public List<Point> findIntersections(Ray ray) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

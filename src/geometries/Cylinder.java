@@ -5,6 +5,8 @@ import primitives.Vector;
 import primitives.Ray;
 import static primitives.Util.*;
 
+import java.util.List;
+
 /**
  * Class Cylinder is a class that extends Tube, representing a 3-dimensional
  * cylinder which is a tube with a height,
@@ -62,4 +64,9 @@ public class Cylinder extends Tube {
 		return p.subtract(o).normalize();
 	}
 
+	@Override
+	public List<Point> findIntersections(Ray ray) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
