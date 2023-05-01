@@ -98,5 +98,13 @@ class PlaneTests {
 		// TC07: Ray is orthogonal to the plane and starts after the plane
 		ray = new Ray(new Point(0, 0, 1.5), new Vector(1, 1, 1));
 		assertNull(plane.findIntersections(ray), "Ray is orthogonal to the plane and starts after the plane, so there is no intersection point");
+
+		// TC08: Ray is neither orthogonal nor parallel to and begins at the plane, but not in the reference point
+		ray = new Ray(new Point(1, 0, 0), new Vector(1, 1, 0));
+		assertNull(plane.findIntersections(ray), "Ray is neither orthogonal nor parallel to and begins at the plane, so there is no intersection point");
+
+		// TC09: Ray is neither orthogonal nor parallel to the plane and begins in the same point which appears as reference point in the plane
+		ray = new Ray(new Point(0, 0, 1), new Vector(1, 1, 0));
+		assertNull(plane.findIntersections(ray), "Ray is neither orthogonal nor parallel to the plane and begins in the same point which appears as reference point in the plane, so there is no intersection point");
 	}
 }
