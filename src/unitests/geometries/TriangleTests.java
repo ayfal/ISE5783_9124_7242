@@ -6,12 +6,16 @@ package unitests.geometries;
 import static org.junit.jupiter.api.Assertions.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import org.junit.jupiter.api.Test;
 
 import primitives.Vector;
 import primitives.Point;
+import primitives.Ray;
 import geometries.Triangle;
 
 /**
@@ -35,6 +39,20 @@ class TriangleTests {
 
 		// TC02: making sure normal length = 1 'aka' a unit vector.
 		assertEquals(1, n.length(), 0.00000001, "Triangle's normal is not a unit vector");
-
 	}
+
+	/**
+	 * Test method for {@link geometries.Polygon#findIntersections(primitives.Ray)}.
+	 */
+	 @Test
+	 void testFindIntersections() {
+	 // ============ Equivalence Partitions Tests ==============
+	 Triangle triangle = new Triangle(new Point(1, 0, 1), new Point(0, 1, 1), new Point(-1, -1, 1));
+	 // TC01: Ray intersects the triangle
+	 List<Point> result=triangle.findIntersections(new Ray(new Point(0, 0, 0.5), new Vector(0, 0, 1)));
+	 assertEquals(new Point(0, 0, 1), result.get(0), "triangle's findIntersections() wrong value");
+		
+	 // TC02: Ray does not intersect the triangle and is against the edge of the triangle
+	 assertNull(triangle.findIntersections(new Ray(new Point(1,-1,0), new Vector(0, 0, 1))),
+	 "triangle's findIntersections() wrong value");
 }

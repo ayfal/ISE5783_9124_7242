@@ -123,7 +123,7 @@ class SphereTests {
 		assertNull(result, "Wrong number of points");
 
 		// **** Group: Special cases
-		// TC19: Ray's line is outside, ray is orthogonal to ray start to sphere's center line
+		// TC22: Ray's line is outside, ray is orthogonal to ray start to sphere's center line
 		result= sphere.findIntersections(new Ray(new Point(1,-2, 0), 	new Vector(1,0, 0)));
 		assertNull(result, "Wrong number of points");
 	}
