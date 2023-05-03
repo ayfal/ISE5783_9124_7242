@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
 import primitives.Vector;
 import primitives.Point;
 import primitives.Ray;
+import geometries.Plane;
 import geometries.Triangle;
 
 /**
@@ -48,29 +49,39 @@ class TriangleTests {
 	 void testFindIntersections() {
 	 // ============ Equivalence Partitions Tests ==============
 	 Triangle triangle = new Triangle(new Point(1, 0, 1), new Point(0, 1, 1), new Point(-1, -1, 1));
+	 Plane plane = new Plane(new Point(1, 0, 1), new Point(0, 1, 1), new Point(-1, -1, 1));
 	 // TC01: Ray intersects the triangle
-	 List<Point> result=triangle.findIntersections(new Ray(new Point(0, 0, 0.5), new Vector(0, 0, 1)));
+	 Ray ray = new Ray(new Point(0, 0, 0.5), new Vector(0, 0, 1));
+	 List<Point> result = plane.findIntersections(ray);
+	 assertNotNull(result, "plane's findIntersections() returned null");
+	 result=triangle.findIntersections(ray);
 	 assertEquals(new Point(0, 0, 1), result.get(0), "triangle's findIntersections() wrong value");
 		
 	 // TC02: Ray does not intersect the triangle and is against the edge of the triangle
-	 assertNull(triangle.findIntersections(new Ray(new Point(1,-1,0), new Vector(0, 0, 1))),
-	 "triangle's findIntersections() wrong value");
+	 ray = new Ray(new Point(1,-1,0), new Vector(0, 0, 1));
+	 assertNotNull(plane.findIntersections(ray), "plane's findIntersections() returned null");
+	 assertNull(triangle.findIntersections(ray), "triangle's findIntersections() wrong value");
 
 	 // TC03: Ray does not intersect the triangle and is against the vertex of the triangle
-	 assertNull(triangle.findIntersections(new Ray(new Point(2,0,0), new Vector(0, 0, 1))),
+	 ray = new Ray(new Point(2,0,0), new Vector(0, 0, 1));
+	 assertNotNull(plane.findIntersections(ray), "plane's findIntersections() returned null");
+	 assertNull(triangle.findIntersections(ray),
 	 "triangle's findIntersections() wrong value");
 
 	 // =============== Boundary Values Tests ==================
 	 // TC04: Ray intersects the triangle on the edge of the triangle
-	 assertNull(triangle.findIntersections(new Ray(new Point(0,-0.5,0), new Vector(0, 0, 1))),
-	 "triangle's findIntersections() wrong value");
+	 ray = new Ray(new Point(0,-0.5,0), new Vector(0, 0, 1));
+	 assertNotNull(plane.findIntersections(ray), "plane's findIntersections() returned null");
+	 assertNull(triangle.findIntersections(ray), "triangle's findIntersections() wrong value");
 
 	 // TC05: Ray intersects the triangle on the vertex of the triangle
-	 assertNull(triangle.findIntersections(new Ray(new Point(1,0,0), new Vector(0, 0, 1))),
-	 "triangle's findIntersections() wrong value");
+	 ray = new Ray(new Point(1,0,0), new Vector(0, 0, 1));
+	 assertNotNull(plane.findIntersections(ray), "plane's findIntersections() returned null");
+	 assertNull(triangle.findIntersections(ray), "triangle's findIntersections() wrong value");
 
 	 // TC06: Ray intersects the triangle on the edge's continuation of the triangle
-	 assertNull(triangle.findIntersections(new Ray(new Point(2,-1,0), new Vector(0, 0, 1))),
-	 "triangle's findIntersections() wrong value");
+	 ray = new Ray(new Point(2,-1,0), new Vector(0, 0, 1));
+	 assertNotNull(plane.findIntersections(ray), "plane's findIntersections() returned null");
+	 assertNull(triangle.findIntersections(ray), "triangle's findIntersections() wrong value");
 	 }
 }
