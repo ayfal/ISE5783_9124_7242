@@ -2,15 +2,18 @@ package geometries;
 
 import java.util.List;
 
-import primitives.Point;
-import primitives.Ray;
-import primitives.Vector;
+// import primitives.Point;
+// import primitives.Ray;
+// import primitives.Vector;
+// import primitives.Util;
+import primitives.*;
+import static primitives.Util.*;
 
 /**
  * Class Plane is the basic class representing a two-dimensional plane in a
  * Cartesian 3-Dimensional coordinate system.
  * 
- * @author Ariel David 
+ * @author Ariel David
  */
 
 public class Plane implements Geometry {
@@ -23,6 +26,7 @@ public class Plane implements Geometry {
 	/**
 	 * constructor for a plane
 	 * sets the normal to be the cross product of the vectors from p0 to p1 and p2
+	 * 
 	 * @param p0 point
 	 * @param p1 point
 	 * @param p2 point
@@ -37,6 +41,7 @@ public class Plane implements Geometry {
 
 	/**
 	 * constructor for a plane
+	 * 
 	 * @param p point
 	 * @param n vector
 	 */
@@ -48,6 +53,7 @@ public class Plane implements Geometry {
 	// getters
 	/**
 	 * get p0
+	 * 
 	 * @return p0
 	 */
 	public Point getP0() {
@@ -56,6 +62,7 @@ public class Plane implements Geometry {
 
 	/**
 	 * get normal
+	 * 
 	 * @return normal
 	 */
 	public Vector getNormal() {
@@ -69,7 +76,17 @@ public class Plane implements Geometry {
 
 	@Override
 	public List<Point> findIntersections(Ray ray) {
-		// TODO Auto-generated method stub
+		double nv = normal.dotProduct(ray.getDir());
+		if (isZero(nv))
+			return null;
+		if (p0.equals(ray.getP0()))
+			return null;
+		double nQMinusP0 = normal.dotProduct(p0.subtract(ray.getP0()));
+		double t = alignZero(nQMinusP0 / nv);
+		if (t > 0) {
+			Point p = ray.getP0().add(ray.getDir().scale(t)); // for readability
+			return List.of(p);
+		}
 		return null;
 	}
 }
