@@ -8,16 +8,51 @@ package primitives;
 public class Point {
 
 	final Double3 point;
+	
+	//constructors
 
 	/**
-	 * returns the point (0,0,0).
+	 * constructor for a point
+	 * @param d
 	 */
 	public Point(Double3 d) {
 		this(d.d1, d.d2, d.d3);
 	}
 
+	/**
+	 * constructor for a point
+	 * @param d1
+	 * @param d2
+	 * @param d3
+	 */
 	public Point(double d1, double d2, double d3) {
 		point = new Double3(d1, d2, d3);
+	}
+
+	//getters
+
+	/**
+	 * get d1
+	 * @return d1
+	 */
+	public double getX() {
+		return point.d1;
+	}
+
+	/**
+	 * get d2
+	 * @return d2
+	 */
+	public double getY() {
+		return point.d2;
+	}
+
+	/**
+	 * get d3
+	 * @return d3
+	 */
+	public double getZ() {
+		return point.d3;
 	}
 
 	// functions
