@@ -53,4 +53,13 @@ public class Ray {
 	public String toString() {
 		return "Ray { p0 =  " + p0 + ", dir = " + dir + " }\n";
 	}
+
+	/**
+	 * get point on ray at distance t1 from p0
+	 * @param t1
+	 * @return point
+	 */
+    public Point getPoint(double t1) {
+        return p0.add(dir.scale(t1));
+    }
 }

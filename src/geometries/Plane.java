@@ -69,24 +69,32 @@ public class Plane implements Geometry {
 		return normal;
 	}
 
+	/**
+	 * get normal
+	 * @param p point
+	 * @return normal
+	 */
 	@Override
 	public Vector getNormal(Point p) {
 		return normal;
 	}
 
+	/**
+	 * find intersections of ray with plane
+	 * @param ray ray
+	 * @return list of intersections
+	 */
 	@Override
 	public List<Point> findIntersections(Ray ray) {
-		double nv = normal.dotProduct(ray.getDir());
+		double nv = alignZero(normal.dotProduct(ray.getDir()));
 		if (isZero(nv))
 			return null;
 		if (p0.equals(ray.getP0()))
 			return null;
-		double nQMinusP0 = normal.dotProduct(p0.subtract(ray.getP0()));
+		double nQMinusP0 = alignZero(normal.dotProduct(p0.subtract(ray.getP0())));
 		double t = alignZero(nQMinusP0 / nv);
-		if (t > 0) {
-			Point p = ray.getP0().add(ray.getDir().scale(t)); // for readability
-			return List.of(p);
-		}
+		if (t > 0)
+			return List.of(ray.getPoint(t));
 		return null;
 	}
 	

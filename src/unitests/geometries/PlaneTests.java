@@ -70,7 +70,7 @@ class PlaneTests {
 		// ============ Equivalence Partitions Tests ==============
 		// TC01: Ray intersects the plane
 		Ray ray = new Ray(new Point(0, 0, 0.5), new Vector(0, 0, 4));
-		assertEquals(List.of(new Point(1, 1, 1)), plane.findIntersections(ray),
+		assertEquals(List.of(new Point(0, 0, 1)), plane.findIntersections(ray),
 				"intersection point is not correct");
 
 		// TC02: Ray does not intersect the plane
@@ -87,8 +87,8 @@ class PlaneTests {
 		assertNull(plane.findIntersections(ray), "Ray is parrallel to the plane and included in it, so there is no intersection point");
 
 		// TC05: Ray is orthogonal to the plane and starts before the plane
-		ray = new Ray(new Point(0, 0, 0.5), new Vector(1, 1, 1));
-		assertEquals(List.of(new Point(1, 1, 1.5)), plane.findIntersections(ray),
+		ray = new Ray(new Point(0, 0, -0.5), new Vector(1, 1, 1));
+		assertEquals(List.of(new Point(0.5, 0.5, 0)), plane.findIntersections(ray),
 				"intersection point is not correct");
 
 		// TC06: Ray is orthogonal to the plane and starts in the plane

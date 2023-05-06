@@ -5,6 +5,7 @@ import java.util.List;
 import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
+import static primitives.Util.*;
 
 /**
  * Class Triangle is the basic class that extends polygon, representing a two-dimensional triangle in a
@@ -25,11 +26,16 @@ public class Triangle extends Polygon {
 		super(p1, p2, p3);
 	}
 	
+	/**
+	 * find intersections of ray with triangle
+	 * @param ray ray
+	 * @return list of intersections
+	 */
+	
 	@Override
 	public List<Point> findIntersections(Ray ray) {
 		List<Point> planeIntersections = plane.findIntersections(ray);
 		if (planeIntersections != null) {
-			Point p = planeIntersections.get(0);
 			Point p0 = ray.getP0();
 			Vector v = ray.getDir();
 			Vector v1 = vertices.get(0).subtract(p0);
@@ -38,9 +44,9 @@ public class Triangle extends Polygon {
 			Vector n1 = v1.crossProduct(v2);
 			Vector n2 = v2.crossProduct(v3);
 			Vector n3 = v3.crossProduct(v1);
-			double s1 = v.dotProduct(n1);
-			double s2 = v.dotProduct(n2);
-			double s3 = v.dotProduct(n3);
+			double s1 = alignZero(v.dotProduct(n1));
+			double s2 = alignZero(v.dotProduct(n2));
+			double s3 = alignZero(v.dotProduct(n3));
 			if ((s1 > 0 && s2 > 0 && s3 > 0) || (s1 < 0 && s2 < 0 && s3 < 0)) {
 				return planeIntersections;
 			}
