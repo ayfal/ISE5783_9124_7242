@@ -12,9 +12,9 @@ import primitives.Ray;
  */
 public interface Intersectable {
 	/**
-	 * find intersections
+	 * find intersections with a ray
 	 * 
-	 * @param ray ray
+	 * @param ray ray to intersect with
 	 * @return list of intersections
 	 */
 	List<Point> findIntersections(Ray ray);

@@ -95,9 +95,7 @@ public class Plane implements Geometry {
 			return null;
 		double nQMinusP0 = alignZero(normal.dotProduct(p0.subtract(ray.getP0())));
 		double t = alignZero(nQMinusP0 / nv);
-		if (t > 0)
-			return List.of(ray.getPoint(t));
-		return null;
+		return t > 0 ? List.of(ray.getPoint(t)) : null;
 	}
 
 }

@@ -10,6 +10,7 @@ package geometries;
 public abstract class RadialGeometry implements Geometry {
 
 	protected final double radius;
+	protected final double radius2; // squared radius
 
 	// constructor
 	/**
@@ -19,5 +20,6 @@ public abstract class RadialGeometry implements Geometry {
 	 */
 	public RadialGeometry(double r) {
 		this.radius = r;
+		this.radius2 = r * r;
 	}
 }
