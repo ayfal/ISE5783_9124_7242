@@ -20,7 +20,9 @@ import geometries.Plane;
 import geometries.Triangle;
 
 /**
- * @author Ariel David and Moshe Weisfish
+ * Test Triangle class methods
+ * 
+ * @author Ariels
  *
  */
 class TriangleTests {

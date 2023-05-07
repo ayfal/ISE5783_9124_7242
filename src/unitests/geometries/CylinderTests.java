@@ -15,7 +15,8 @@ import primitives.Ray;
 import geometries.Cylinder;
 
 /**
- * @author Ariel
+ * Test Cylinder class methods
+ * @author Ariels
  *
  */
 class CylinderTests {

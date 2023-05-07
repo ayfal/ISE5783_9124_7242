@@ -24,9 +24,9 @@ public class Point {
 	/**
 	 * constructor for a point
 	 * 
-	 * @param d1
-	 * @param d2
-	 * @param d3
+	 * @param d1 x coordinate
+	 * @param d2 y coordinate
+	 * @param d3 z coordinate
 	 */
 	public Point(double d1, double d2, double d3) {
 		point = new Double3(d1, d2, d3);
@@ -44,18 +44,18 @@ public class Point {
 	}
 
 	/**
-	 * get d2
+	 * get Y coordinate
 	 * 
-	 * @return d2
+	 * @return coordinate value
 	 */
 	public double getY() {
 		return point.d2;
 	}
 
 	/**
-	 * get d3
+	 * get Z coordinate
 	 * 
-	 * @return d3
+	 * @return coordinate value
 	 */
 	public double getZ() {
 		return point.d3;
@@ -70,6 +70,11 @@ public class Point {
 		return (obj instanceof Point other) && this.point.equals(other.point);
 	}
 
+	/**
+	 * calculates the squared distance between the two points.
+	 * @param other the other point.
+	 * @return the squared distance between this and the other point.
+	 */
 	public double distanceSquared(Point other) {
 		double x = this.point.d1 - other.point.d1;
 		double y = this.point.d2 - other.point.d2;

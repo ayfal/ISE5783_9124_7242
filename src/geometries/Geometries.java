@@ -11,7 +11,7 @@ import java.util.List;
  * Class Geometries is the basic class representing a list of geometries in a
  * Cartesian 3-Dimensional coordinate system, that implements Intersectable.
  * 
- * @author Ariel {David &amp; Falik}
+ * @author Ariels
  */
 public class Geometries implements Intersectable {
 	private List<Intersectable> geometries;

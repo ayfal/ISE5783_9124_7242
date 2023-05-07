@@ -12,7 +12,7 @@ import java.util.List;
  * cylinder which is a tube with a height, (The tube is defined by its radius,
  * its axis ray and its height) in a Cartesian 3-Dimensional coordinate system.
  * 
- * @author Ariel David
+ * @author Ariels
  */
 public class Cylinder extends Tube {
 
@@ -22,7 +22,7 @@ public class Cylinder extends Tube {
 	/**
 	 * constructor for a cylinder
 	 * 
-	 * @param h      double
+	 * @param h      height
 	 * @param radius double
 	 * @param axis   ray
 	 */

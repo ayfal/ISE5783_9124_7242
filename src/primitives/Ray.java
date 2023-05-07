@@ -27,18 +27,18 @@ public class Ray {
 
 	// getters
 	/**
-	 * get p0
+	 * get reference point of ray
 	 * 
-	 * @return p0
+	 * @return reference point
 	 */
 	public Point getP0() {
 		return p0;
 	}
 
 	/**
-	 * get direction
+	 * get direction of ray
 	 * 
-	 * @return dir
+	 * @return direction vector
 	 */
 	public Vector getDir() {
 		return dir;
@@ -60,8 +60,8 @@ public class Ray {
 	/**
 	 * get point on ray at distance t1 from p0
 	 * 
-	 * @param t1
-	 * @return point
+	 * @param t1 distance
+	 * @return point on ray
 	 */
 	public Point getPoint(double t1) {
 		return p0.add(dir.scale(t1));

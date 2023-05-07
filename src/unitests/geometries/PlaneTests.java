@@ -18,8 +18,9 @@ import primitives.Vector;
 import geometries.Plane;
 
 /**
+ * Test Plane class methods
  * 
- * @author Ariel David and Moshe Weisfish
+ * @author Ariels
  *
  */
 class PlaneTests {

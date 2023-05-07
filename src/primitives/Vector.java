@@ -12,9 +12,9 @@ public class Vector extends Point {
 	/**
 	 * constructor for a vector
 	 * 
-	 * @param d1 double
-	 * @param d2 double
-	 * @param d3 double
+	 * @param d1 X coordinate
+	 * @param d2 Y coordinate
+	 * @param d3 Z coordinate
 	 * @throws IllegalArgumentException if the vector is (0,0,0)
 	 */
 	public Vector(double d1, double d2, double d3) {
@@ -26,7 +26,7 @@ public class Vector extends Point {
 	/**
 	 * constructor for a vector
 	 * 
-	 * @param d double3
+	 * @param d triad of values for coordinates
 	 */
 	public Vector(Double3 d) {
 		this(d.d1, d.d2, d.d3);

@@ -16,7 +16,7 @@ import primitives.Vector;
 /**
  * Unit tests for primitives.Point class
  * 
- * @author Ariel David and Moshe Weisfish
+ * @author Ariels
  *
  */
 class VectorTests {

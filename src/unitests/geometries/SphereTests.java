@@ -17,7 +17,9 @@ import primitives.Vector;
 import geometries.Sphere;
 
 /**
- * @author Ariel David and Moshe Weisfish
+ * Test Sphere class methods
+ * 
+ * @author Ariels
  *
  */
 class SphereTests {
