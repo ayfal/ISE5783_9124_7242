@@ -11,6 +11,7 @@ public class Vector extends Point {
 	// constructors
 	/**
 	 * constructor for a vector
+	 * 
 	 * @param d1 double
 	 * @param d2 double
 	 * @param d3 double
@@ -24,13 +25,13 @@ public class Vector extends Point {
 
 	/**
 	 * constructor for a vector
+	 * 
 	 * @param d double3
 	 */
 	public Vector(Double3 d) {
 		this(d.d1, d.d2, d.d3);
 	}
 
-	
 	// functions
 
 	@Override
@@ -44,12 +45,12 @@ public class Vector extends Point {
 	 * calculates a new vector that is equal to the addition of the two vectors.
 	 * 
 	 * @param v the other vector.
-	 * @return a new vector that is equal to the addition of this and the other vector.
+	 * @return a new vector that is equal to the addition of this and the other
+	 *         vector.
 	 */
 	public Vector add(Vector v) {
 		return new Vector(this.point.add(v.point));
 	}
-
 
 	/**
 	 * calculates a new vector that is the scaled version of the original vector.
@@ -62,12 +63,12 @@ public class Vector extends Point {
 	}
 
 	/**
-	 * Calculates a scalar value of dot-product operation between this vector and another vector:
-	 *  If the dot product is positive, 
-	 *    the vectors are pointing in roughly the same direction,and the angle between them is acute.
-	 *  If the dot product is negative,
-	 *    the vectors are pointing in roughly opposite directions, and the angle between them is obtuse.
-	 *  If the dot product is zero, the vectors are perpendicular to each other.
+	 * Calculates a scalar value of dot-product operation between this vector and
+	 * another vector: If the dot product is positive, the vectors are pointing in
+	 * roughly the same direction,and the angle between them is acute. If the dot
+	 * product is negative, the vectors are pointing in roughly opposite directions,
+	 * and the angle between them is obtuse. If the dot product is zero, the vectors
+	 * are perpendicular to each other.
 	 * 
 	 * @param v the another vector
 	 * @return the calculation result
@@ -119,9 +120,11 @@ public class Vector extends Point {
 	}
 
 	/**
-	 * calculates a new vector that is equal to the normalized version of the original vector.
+	 * calculates a new vector that is equal to the normalized version of the
+	 * original vector.
 	 * 
-	 * @return a new vector that is equal to the normalized version of the original vector.
+	 * @return a new vector that is equal to the normalized version of the original
+	 *         vector.
 	 */
 	public Vector normalize() {
 		return new Vector(this.point.reduce(this.length()));

@@ -9,10 +9,11 @@ import static primitives.Util.*;
 import java.util.List;
 
 /**
- * Class Tube is the basic class that extends RadialGeometry, representing a 3-dimensional Tube(endless cylinder) in a
- * Cartesian 3-Dimensional coordinate system.
+ * Class Tube is the basic class that extends RadialGeometry, representing a
+ * 3-dimensional Tube(endless cylinder) in a Cartesian 3-Dimensional coordinate
+ * system.
  * 
- * @author Ariel David 
+ * @author Ariel David
  */
 public class Tube extends RadialGeometry {
 
@@ -21,8 +22,9 @@ public class Tube extends RadialGeometry {
 	// constructor
 	/**
 	 * constructor for a tube
+	 * 
 	 * @param radius double
-	 * @param ax ray
+	 * @param ax     ray
 	 */
 	public Tube(double radius, Ray ax) {
 		super(radius);
@@ -32,6 +34,7 @@ public class Tube extends RadialGeometry {
 	// getters
 	/**
 	 * get axis
+	 * 
 	 * @return axis
 	 */
 	public Ray getAxis() {
@@ -40,6 +43,7 @@ public class Tube extends RadialGeometry {
 
 	/**
 	 * get radius
+	 * 
 	 * @return radius
 	 */
 	public double getRadius() {

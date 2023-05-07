@@ -15,6 +15,7 @@ import primitives.Ray;
 import geometries.Tube;
 
 /**
+ * Test Tube class methods
  * @author Ariel David and Moshe Weisfish
  *
  */

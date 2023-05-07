@@ -10,12 +10,13 @@ package primitives;
 public class Ray {
 
 	final Point p0;
-  
+
 	final Vector dir;
 
 	// constructor
 	/**
 	 * constructor for a ray
+	 * 
 	 * @param p point
 	 * @param d vector
 	 */
@@ -27,6 +28,7 @@ public class Ray {
 	// getters
 	/**
 	 * get p0
+	 * 
 	 * @return p0
 	 */
 	public Point getP0() {
@@ -35,6 +37,7 @@ public class Ray {
 
 	/**
 	 * get direction
+	 * 
 	 * @return dir
 	 */
 	public Vector getDir() {
@@ -56,10 +59,11 @@ public class Ray {
 
 	/**
 	 * get point on ray at distance t1 from p0
+	 * 
 	 * @param t1
 	 * @return point
 	 */
-    public Point getPoint(double t1) {
-        return p0.add(dir.scale(t1));
-    }
+	public Point getPoint(double t1) {
+		return p0.add(dir.scale(t1));
+	}
 }

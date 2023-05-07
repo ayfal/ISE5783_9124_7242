@@ -24,8 +24,8 @@ public class Plane implements Geometry {
 
 	// constructors
 	/**
-	 * constructor for a plane
-	 * sets the normal to be the cross product of the vectors from p0 to p1 and p2
+	 * constructor for a plane sets the normal to be the cross product of the
+	 * vectors from p0 to p1 and p2
 	 * 
 	 * @param p0 point
 	 * @param p1 point
@@ -71,6 +71,7 @@ public class Plane implements Geometry {
 
 	/**
 	 * get normal
+	 * 
 	 * @param p point
 	 * @return normal
 	 */
@@ -81,6 +82,7 @@ public class Plane implements Geometry {
 
 	/**
 	 * find intersections of ray with plane
+	 * 
 	 * @param ray ray
 	 * @return list of intersections
 	 */
@@ -97,5 +99,5 @@ public class Plane implements Geometry {
 			return List.of(ray.getPoint(t));
 		return null;
 	}
-	
+
 }

@@ -8,16 +8,17 @@ import primitives.Vector;
 import static primitives.Util.*;
 
 /**
- * Class Triangle is the basic class that extends polygon, representing a two-dimensional triangle in a
- * Cartesian 3-Dimensional coordinate system.
+ * Class Triangle is the basic class that extends polygon, representing a
+ * two-dimensional triangle in a Cartesian 3-Dimensional coordinate system.
  * 
- * @author Ariel David 
+ * @author Ariel David
  */
 public class Triangle extends Polygon {
 
 	// constructor
 	/**
 	 * constructor for a triangle
+	 * 
 	 * @param p1 point
 	 * @param p2 point
 	 * @param p3 point
@@ -25,13 +26,14 @@ public class Triangle extends Polygon {
 	public Triangle(Point p1, Point p2, Point p3) {
 		super(p1, p2, p3);
 	}
-	
+
 	/**
 	 * find intersections of ray with triangle
+	 * 
 	 * @param ray ray
 	 * @return list of intersections
 	 */
-	
+
 	@Override
 	public List<Point> findIntersections(Ray ray) {
 		List<Point> planeIntersections = plane.findIntersections(ray);
@@ -54,4 +56,3 @@ public class Triangle extends Polygon {
 		return null;
 	}
 }
-  
