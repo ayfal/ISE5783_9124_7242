@@ -24,8 +24,8 @@ public class Plane implements Geometry {
 
 	// constructors
 	/**
-	 * constructor for a plane sets the normal to be the cross product of the
-	 * vectors from p0 to p1 and p2
+	 * constructor for a plane
+	 * sets the normal to be the cross product of the vectors from p0 to p1 and p2
 	 * 
 	 * @param p0 point
 	 * @param p1 point
@@ -71,7 +71,6 @@ public class Plane implements Geometry {
 
 	/**
 	 * get normal
-	 * 
 	 * @param p point
 	 * @return normal
 	 */
@@ -80,12 +79,6 @@ public class Plane implements Geometry {
 		return normal;
 	}
 
-	/**
-	 * find intersections of ray with plane
-	 * 
-	 * @param ray ray
-	 * @return list of intersections
-	 */
 	@Override
 	public List<Point> findIntersections(Ray ray) {
 		double nv = alignZero(normal.dotProduct(ray.getDir()));
@@ -95,7 +88,9 @@ public class Plane implements Geometry {
 			return null;
 		double nQMinusP0 = alignZero(normal.dotProduct(p0.subtract(ray.getP0())));
 		double t = alignZero(nQMinusP0 / nv);
-		return t > 0 ? List.of(ray.getPoint(t)) : null;
+		if (t > 0)
+			return List.of(ray.getPoint(t));
+		return null;
 	}
-
+	
 }

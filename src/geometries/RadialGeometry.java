@@ -16,10 +16,20 @@ public abstract class RadialGeometry implements Geometry {
 	/**
 	 * constructor for a radial geometry
 	 * 
-	 * @param r double
+	 * @param r double radius
 	 */
 	public RadialGeometry(double r) {
 		this.radius = r;
 		this.radius2 = r * r;
+	}
+
+	// getters
+	/**
+	 * get radius
+	 * 
+	 * @return radius
+	 */
+	public double getRadius() {
+		return radius;
 	}
 }

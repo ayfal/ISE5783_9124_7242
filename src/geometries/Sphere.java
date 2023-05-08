@@ -20,8 +20,8 @@ public class Sphere extends RadialGeometry {
 	/**
 	 * constructor for a sphere
 	 * 
-	 * @param r double
-	 * @param c point
+	 * @param r double radius
+	 * @param c point center of sphere
 	 */
 	public Sphere(double r, Point c) {
 		super(r);
@@ -38,14 +38,6 @@ public class Sphere extends RadialGeometry {
 		return center;
 	}
 
-	/*
-	 * get radius
-	 * 
-	 * @return radius
-	 */
-	public double getRadius() {
-		return radius;
-	}
 
 	// functions
 	@Override
@@ -53,13 +45,6 @@ public class Sphere extends RadialGeometry {
 		Vector v = p.subtract(center);
 		return v.normalize();
 	}
-
-	/**
-	 * find intersections of ray with sphere
-	 * 
-	 * @param ray ray
-	 * @return list of intersections
-	 */
 
 	@Override
 	public List<Point> findIntersections(Ray ray) {
