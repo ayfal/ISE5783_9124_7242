@@ -1,6 +1,3 @@
-/**
- * 
- */
 package renderer;
 
 import primitives.Point;
@@ -140,5 +137,4 @@ public class Camera {
     public Ray constructRay(int nX, int nY, int j, int i){
         return null;
     }
-
 }
