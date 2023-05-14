@@ -3,6 +3,7 @@ package renderer;
 import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
+import static primitives.Util.*;
 
 /**
  * class Camera represents a camera in a 3D Cartesian coordinate system 
@@ -135,6 +136,24 @@ public class Camera {
      * @return ray
      */
     public Ray constructRay(int nX, int nY, int j, int i){
-        return null;
+        // pixel measurments
+        double rY = (double) this.height / nY;
+        double rX = (double) this.width / nX;
+
+        // place pixel[i,j] in view grid center
+        Point Pij = p0.add(vTo.scale(distance));;
+
+        // calculate pixel[i,j] center
+        double yI = -(i -((nY - 1)/2d)) * rY;
+        double xJ = (j -((nX - 1)/2d)) * rX;;
+        
+        // shift to center of pixel[i,j]
+        if (!isZero(xJ))
+            Pij = Pij.add(vRight.scale(xJ));
+        if (!isZero(yI))
+            Pij = Pij.add(vUp.scale(yI));
+
+        // return ray from camera to viewPlane coordinate (i, j)
+        return new Ray(p0, Pij.subtract(p0));
     }
 }
