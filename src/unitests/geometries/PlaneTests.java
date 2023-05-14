@@ -66,7 +66,6 @@ class PlaneTests {
 				"ERROR: The calculation of normal to the plane is not calculated correctly");
 	}
 
-
 	/**
 	 * Test method for {@link geometries.Plane#findIntersections(primitives.Ray)}.
 	 */

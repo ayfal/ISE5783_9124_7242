@@ -72,6 +72,7 @@ public class Point {
 
 	/**
 	 * calculates the squared distance between the two points.
+	 * 
 	 * @param other the other point.
 	 * @return the squared distance between this and the other point.
 	 */

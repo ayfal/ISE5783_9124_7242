@@ -38,7 +38,6 @@ public class Sphere extends RadialGeometry {
 		return center;
 	}
 
-
 	// functions
 	@Override
 	public Vector getNormal(Point p) {

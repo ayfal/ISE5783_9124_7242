@@ -55,8 +55,8 @@ class PointTests {
 				"subtract function result is wrong");
 
 		// =============== Boundary Values Tests ==================
-				// TC02: a test to check if subtruct creates "vector zero".
-		assertThrows(IllegalArgumentException.class, () -> new Point(1, 1, 1).subtract((new Point(1, 1, 1))), 
+		// TC02: a test to check if subtruct creates "vector zero".
+		assertThrows(IllegalArgumentException.class, () -> new Point(1, 1, 1).subtract((new Point(1, 1, 1))),
 				"Created a zero vector that dosent exist");
 	}
 
