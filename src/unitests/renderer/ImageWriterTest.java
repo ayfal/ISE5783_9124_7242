@@ -29,8 +29,13 @@ class ImageWriterTest {
 	 */
 	@Test
 	void testWriteToImage() {
+<<<<<<< HEAD
+		int nX=801;
+		int nY=501;
+=======
 		int nX = 801;
 		int nY = 501;
+>>>>>>> 89b991c8849750df9dec367a881cb8807f2de154
 
 		Color yellow = new Color(255d, 255d, 0);
 		Color red = new Color(255, 0, 0);
