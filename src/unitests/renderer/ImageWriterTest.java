@@ -1,8 +1,4 @@
-/**
- * 
- */
 package unitests.renderer;
-
 
 import org.junit.jupiter.api.Test;
 
@@ -29,10 +25,10 @@ class ImageWriterTest {
 	 */
 	@Test
 	void testWriteToImage() {
-		
+
 		int nX = 801;
 		int nY = 501;
-		
+
 		Color yellow = new Color(255d, 255d, 0);
 		Color red = new Color(255, 0, 0);
 
