@@ -12,49 +12,52 @@ import primitives.Color;
  *
  */
 public class Scene {
-    public String name;
-    public Color background=Color.BLACK;
-    public AmbientLight ambientLight= AmbientLight.NONE;
-    public Geometries geometries= new Geometries();
+	public String name;
+	public Color background = Color.BLACK;
+	public AmbientLight ambientLight = AmbientLight.NONE;
+	public Geometries geometries = new Geometries();
 
-    // ***************** Constructors ********************** //
-    /**
-     * constructs a scene with a given name
-     * 
-     * @param name name of the scene
-     */
-    public Scene(String n) {
-        name = n;
-    }
+	// ***************** Constructors ********************** //
+	/**
+	 * constructs a scene with a given name
+	 * 
+	 * @param name name of the scene
+	 */
+	public Scene(String n) {
+		name = n;
+	}
 
-    // ***************** Getters/Setters ********************** //
-    /**
-     * set the background color of the scene
-     * @param c color
-     * @return the scene
-     */
-    Scene setBackground(Color c) {
-        background = c;
-        return this;
-    }
+	// ***************** Getters/Setters ********************** //
+	/**
+	 * set the background color of the scene
+	 * 
+	 * @param c color
+	 * @return the scene
+	 */
+	Scene setBackground(Color c) {
+		background = c;
+		return this;
+	}
 
-    /**
-     * set the ambient light of the scene
-     * @param a ambient light
-     * @return the scene
-     */
-    Scene setAmbientLight(AmbientLight a) {
-        ambientLight = a;
-        return this;
-    }
+	/**
+	 * set the ambient light of the scene
+	 * 
+	 * @param a ambient light
+	 * @return the scene
+	 */
+	Scene setAmbientLight(AmbientLight a) {
+		ambientLight = a;
+		return this;
+	}
 
-    /**
-     * set the geometries of the scene
-     * @param g geometries
-     * @return the scene
-     */
-    Scene setGeometries(Geometries g) {
-        geometries = g;
-        return this;
-    }
+	/**
+	 * set the geometries of the scene
+	 * 
+	 * @param g geometries
+	 * @return the scene
+	 */
+	Scene setGeometries(Geometries g) {
+		geometries = g;
+		return this;
+	}
 }
