@@ -2,6 +2,8 @@ package primitives;
 
 import static primitives.Util.*;
 
+import java.util.List;
+
 /**
  * Class Ray is the basic class representing a point and a direction in a
  * Cartesian 3-Dimensional coordinate system.
@@ -67,5 +69,24 @@ public class Ray {
 	 */
 	public Point getPoint(double t1) {
 		return isZero(t1) ? p0 : p0.add(dir.scale(t1));
+	}
+
+	/**
+	 * find the closest point to p0 from a list of points
+	 * 
+	 * @param points list of points
+	 * @return closest point
+	 */
+	public Point findClosestPoint(List<Point> points) {
+		Point closestPoint = null;
+		double closestDistance = Double.MAX_VALUE;
+		for (Point point : points) {
+			double distance = point.distance(p0);
+			if (distance < closestDistance) {
+				closestDistance = distance;
+				closestPoint = point;
+			}
+		}
+		return closestPoint;
 	}
 }
