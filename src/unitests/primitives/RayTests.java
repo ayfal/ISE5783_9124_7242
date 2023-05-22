@@ -42,19 +42,22 @@ public class RayTests {
 	 * Test method for {@link primitives.Ray#findClosestPoint(java.util.List)}.
 	 */
 	@Test
-	void testFindClosestPoint(){
+	void testFindClosestPoint() {
 		// ============ Equivalence Partitions Tests ==============
 		Ray ray = new Ray(new Point(1, 0, 0), new Vector(1, 0, 0));
 		// TC01: point in the middle of the list
-		assertEquals(new Point(2, 0, 0), ray.findClosestPoint(List.of(new Point(3, 0, 0), 
-			new Point(2, 0, 0), new Point(4, 0, 0))), "ERROR: findClosestPoint() wrong value");
+		assertEquals(new Point(2, 0, 0),
+				ray.findClosestPoint(List.of(new Point(3, 0, 0), new Point(2, 0, 0), new Point(4, 0, 0))),
+				"ERROR: findClosestPoint() wrong value");
 		// ==================== Boundary Values Tests ==================
 		// TC02: point in the beginning of the list
-		assertEquals(new Point(2, 0, 0), ray.findClosestPoint(List.of(new Point(2, 0, 0), 
-			new Point(3, 0, 0), new Point(4, 0, 0))), "ERROR: findClosestPoint() wrong value");
+		assertEquals(new Point(2, 0, 0),
+				ray.findClosestPoint(List.of(new Point(2, 0, 0), new Point(3, 0, 0), new Point(4, 0, 0))),
+				"ERROR: findClosestPoint() wrong value");
 		// TC03: point in the end of the list
-		assertEquals(new Point(2, 0, 0), ray.findClosestPoint(List.of(new Point(4, 0, 0), 
-			new Point(3, 0, 0), new Point(2, 0, 0))), "ERROR: findClosestPoint() wrong value");
+		assertEquals(new Point(2, 0, 0),
+				ray.findClosestPoint(List.of(new Point(4, 0, 0), new Point(3, 0, 0), new Point(2, 0, 0))),
+				"ERROR: findClosestPoint() wrong value");
 		// TC04: empty list
 		assertNull(ray.findClosestPoint(List.of()), "ERROR: findClosestPoint() should return null");
 	}
