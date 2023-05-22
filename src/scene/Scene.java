@@ -34,7 +34,7 @@ public class Scene {
 	 * @param c color
 	 * @return the scene
 	 */
-	Scene setBackground(Color c) {
+	public Scene setBackground(Color c) {
 		background = c;
 		return this;
 	}
@@ -45,7 +45,7 @@ public class Scene {
 	 * @param a ambient light
 	 * @return the scene
 	 */
-	Scene setAmbientLight(AmbientLight a) {
+	public Scene setAmbientLight(AmbientLight a) {
 		ambientLight = a;
 		return this;
 	}

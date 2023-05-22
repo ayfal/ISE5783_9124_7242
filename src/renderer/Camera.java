@@ -5,6 +5,10 @@ import primitives.Ray;
 import primitives.Vector;
 import static primitives.Util.*;
 
+import java.util.MissingResourceException;
+
+import primitives.Color;
+
 /**
  * class Camera represents a camera in a 3D Cartesian coordinate system
  * 
@@ -19,6 +23,8 @@ public class Camera {
 	double width;
 	double height;
 	double distance;
+	private ImageWriter imageWriter;
+	private RayTracerBase rayTracerBase;
 
 	// constructors
 
@@ -130,6 +136,27 @@ public class Camera {
 	}
 
 	/**
+	 * set image writer
+	 * @param iw image writer
+	 * @return camera
+	 */
+	public Camera setImageWriter(ImageWriter iw) {
+		imageWriter = iw;
+		return this;
+	}
+
+	/**
+	 * set ray tracer base
+	 * @param rtb ray tracer base
+	 * @return camera
+	 */
+	public Camera setRayTracerBase(RayTracerBasic rtb) {
+		rayTracerBase = rtb;
+		return this;
+	}
+
+	// functions
+	/**
 	 * construct ray through pixel
 	 * 
 	 * @param nX number of columns
@@ -161,4 +188,53 @@ public class Camera {
 		// return ray from camera to viewPlane coordinate (i, j)
 		return new Ray(p0, pIJ.subtract(p0));
 	}
+
+	public void renderImage(){
+		if (imageWriter == null) {
+			throw new MissingResourceException("imageWriter is not defined", "ImageWriter", "imageWriter");
+		}
+		if (rayTracerBase == null) {
+			throw new MissingResourceException("rayTracerBase is not defined", "RayTracerBase", "rayTracerBase");
+		}
+		int nX = imageWriter.getNx();
+		int nY = imageWriter.getNy();
+		for (int i = 0; i < nY; i++) {
+			for (int j = 0; j < nX; j++) {
+				Ray ray = constructRay(nX, nY, j, i);
+				imageWriter.writePixel(j, i, rayTracerBase.traceRay(ray));
+			}
+		}
+		//throw new UnsupportedOperationException("not implemented");
+	}
+
+	/**
+	 * print grid on image in a given interval and color
+	 * @param interval interval between lines
+	 * @param color color of the grid
+	 */
+	public void printGrid(int interval, Color color) {
+		if (imageWriter == null) {
+			throw new MissingResourceException("imageWriter is not defined", "ImageWriter", "imageWriter");
+		}
+		int nX = imageWriter.getNx();
+		int nY = imageWriter.getNy();
+		
+		for (int i = 0; i < nX; i++) {
+			for (int j = 0; j < nY; j++) {
+				if (i % interval == 0 || j % interval == 0)
+					imageWriter.writePixel(i, j, color);				
+			}
+		}
+	}
+
+	/**
+	 * verifies that imageWriter isn't null, and calls writeToImage function from ImageWriter class
+	 */
+	public void writeToImage(){
+		if (imageWriter == null) {
+			throw new MissingResourceException("imageWriter is not defined", "ImageWriter", "imageWriter");
+		}
+		imageWriter.writeToImage();
+	}
+		
 }

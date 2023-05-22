@@ -3,7 +3,10 @@
  */
 package renderer;
 
+import java.util.List;
+
 import primitives.Color;
+import primitives.Point;
 import primitives.Ray;
 import scene.Scene;
 
@@ -25,7 +28,12 @@ public class RayTracerBasic extends RayTracerBase {
 
         @Override
         public Color traceRay(Ray ray){
-            return null;
+            List<Point> intersections = scene.geometries.findIntersections(ray);
+            return (intersections != null) ? calcColor(ray.findClosestPoint(intersections)) : scene.background;
+        }
+
+        private Color calcColor(Point point) {
+            return scene.ambientLight.getIntensity();
         }
 
 }
