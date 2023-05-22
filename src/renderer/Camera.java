@@ -137,6 +137,7 @@ public class Camera {
 
 	/**
 	 * set image writer
+	 * 
 	 * @param iw image writer
 	 * @return camera
 	 */
@@ -147,6 +148,7 @@ public class Camera {
 
 	/**
 	 * set ray tracer base
+	 * 
 	 * @param rtb ray tracer base
 	 * @return camera
 	 */
@@ -189,7 +191,7 @@ public class Camera {
 		return new Ray(p0, pIJ.subtract(p0));
 	}
 
-	public void renderImage(){
+	public void renderImage() {
 		if (imageWriter == null) {
 			throw new MissingResourceException("imageWriter is not defined", "ImageWriter", "imageWriter");
 		}
@@ -204,13 +206,14 @@ public class Camera {
 				imageWriter.writePixel(j, i, rayTracerBase.traceRay(ray));
 			}
 		}
-		//throw new UnsupportedOperationException("not implemented");
+		// throw new UnsupportedOperationException("not implemented");
 	}
 
 	/**
 	 * print grid on image in a given interval and color
+	 * 
 	 * @param interval interval between lines
-	 * @param color color of the grid
+	 * @param color    color of the grid
 	 */
 	public void printGrid(int interval, Color color) {
 		if (imageWriter == null) {
@@ -218,23 +221,24 @@ public class Camera {
 		}
 		int nX = imageWriter.getNx();
 		int nY = imageWriter.getNy();
-		
+
 		for (int i = 0; i < nX; i++) {
 			for (int j = 0; j < nY; j++) {
 				if (i % interval == 0 || j % interval == 0)
-					imageWriter.writePixel(i, j, color);				
+					imageWriter.writePixel(i, j, color);
 			}
 		}
 	}
 
 	/**
-	 * verifies that imageWriter isn't null, and calls writeToImage function from ImageWriter class
+	 * verifies that imageWriter isn't null, and calls writeToImage function from
+	 * ImageWriter class
 	 */
-	public void writeToImage(){
+	public void writeToImage() {
 		if (imageWriter == null) {
 			throw new MissingResourceException("imageWriter is not defined", "ImageWriter", "imageWriter");
 		}
 		imageWriter.writeToImage();
 	}
-		
+
 }
