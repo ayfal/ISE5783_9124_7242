@@ -16,10 +16,10 @@ import primitives.Color;
  */
 
 public class Camera {
-	private Point p0;
-	private Vector vUp;
-	private Vector vTo;
-	private Vector vRight;
+	private final Point p0;
+	private final Vector vUp;
+	private final Vector vTo;
+	private final Vector vRight;
 	double width;
 	double height;
 	double distance;
@@ -192,12 +192,10 @@ public class Camera {
 	}
 
 	public void renderImage() {
-		if (imageWriter == null) {
+		if (imageWriter == null)
 			throw new MissingResourceException("imageWriter is not defined", "ImageWriter", "imageWriter");
-		}
-		if (rayTracerBase == null) {
+		if (rayTracerBase == null)
 			throw new MissingResourceException("rayTracerBase is not defined", "RayTracerBase", "rayTracerBase");
-		}
 		int nX = imageWriter.getNx();
 		int nY = imageWriter.getNy();
 		for (int i = 0; i < nY; i++) {
