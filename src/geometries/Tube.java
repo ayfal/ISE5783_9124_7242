@@ -64,4 +64,10 @@ public class Tube extends RadialGeometry {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

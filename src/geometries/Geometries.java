@@ -1,6 +1,5 @@
 package geometries;
 
-import primitives.Point;
 import primitives.Ray;
 
 import java.util.Collections;
@@ -9,11 +8,11 @@ import java.util.List;
 
 /**
  * Class Geometries is the basic class representing a list of geometries in a
- * Cartesian 3-Dimensional coordinate system, that implements Intersectable.
+ * Cartesian 3-Dimensional coordinate system, that extends Intersectable.
  * 
  * @author Ariels
  */
-public class Geometries implements Intersectable {
+public class Geometries extends Intersectable {
 	private List<Intersectable> geometries = new LinkedList<>();
 
 	// constructors
@@ -45,10 +44,10 @@ public class Geometries implements Intersectable {
 	}
 
 	@Override
-	public List<Point> findIntersections(Ray ray) {
-		List<Point> result = null;
+	public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
+		List<GeoPoint> result = null;
 		for (var shape : geometries) {
-			List<Point> intersections = shape.findIntersections(ray);
+			List<GeoPoint> intersections = shape.findGeoIntersectionsHelper(ray);
 			if (intersections != null) {
 				if (result == null)
 					result = new LinkedList<>();
