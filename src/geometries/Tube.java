@@ -16,6 +16,9 @@ import java.util.List;
  */
 public class Tube extends RadialGeometry {
 
+	/**
+	 * axis ray of the tube
+	 */
 	protected final Ray axis;
 
 	// constructor

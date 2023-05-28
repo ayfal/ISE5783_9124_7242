@@ -9,15 +9,30 @@ import primitives.Color;
 
 /**
  * @author Ariel
- * //TODO doc every public and protected field
- * //TODO use finel wherever possible
+ * //TODO doc every public and protected field. done
+ * //TODO use finel wherever possible. done.
  * //TODO omit unnecessary {} in if/else/for/while
- * //TODO write private explicitly
+ * //TODO write private explicitly. done
  */
 public class Scene {
+	/**
+	 * name of the scene
+	 */
 	public final String name;
+
+	/**
+	 * background color of the scene. default is black
+	 */
 	public Color background = Color.BLACK;
+
+	/**
+	 * ambient light of the scene. default is none
+	 */
 	public AmbientLight ambientLight = AmbientLight.NONE;
+
+	/**
+	 * geometries of the scene. default is empty
+	 */
 	public Geometries geometries = new Geometries();
 
 	// ***************** Constructors ********************** //

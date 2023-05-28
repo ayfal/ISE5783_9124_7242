@@ -13,9 +13,9 @@ import java.util.List;
 
 public class Ray {
 
-	final Point p0;
+	private final Point p0;
 
-	final Vector dir;
+	private final Vector dir;
 
 	// constructor
 	/**

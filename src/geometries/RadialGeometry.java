@@ -9,8 +9,15 @@ package geometries;
  */
 public abstract class RadialGeometry implements Geometry {
 
+	/**
+	 * radius of the radial geometry
+	 */
 	protected final double radius;
-	protected final double radius2; // squared radius
+
+	/**
+	 * squared radius of the radial geometry
+	 */
+	protected final double radius2;
 
 	// constructor
 	/**

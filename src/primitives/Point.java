@@ -7,6 +7,9 @@ package primitives;
  * @author Ariel David and Moshe Weisfish
  */
 public class Point {
+	/**
+	 * constant point with coordinates (0,0,0)
+	 */
 	public static final Point ZERO = new Point(0, 0, 0);
 	final Double3 point;
 

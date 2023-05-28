@@ -14,6 +14,10 @@ import primitives.Double3;
  */
 public class AmbientLight {
 	private final Color intensity;
+
+	/**
+	 * constant ambient light with no intensity, aka no ambient light
+	 */
 	public static final AmbientLight NONE = new AmbientLight(Color.BLACK, Double3.ZERO);
 
 	// ***************** Constructors ********************** //
