@@ -9,7 +9,10 @@ import primitives.Color;
 
 /**
  * @author Ariel
- *
+ * //TODO doc every public and protected field
+ * //TODO use finel wherever possible
+ * //TODO omit unnecessary {} in if/else/for/while
+ * //TODO write private explicitly
  */
 public class Scene {
 	public String name;

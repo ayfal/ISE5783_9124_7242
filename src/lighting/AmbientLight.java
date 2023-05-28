@@ -30,7 +30,9 @@ public class AmbientLight {
 		intensity = iA.scale(kA);
 	}
 
-	// TODO: constructor that gets only double kA. ???
+	public AmbientLight(Color iA, Double kA) {
+		intensity = iA.scale(kA);
+	}
 
 	// ***************** Getters/Setters ********************** //
 	/**
