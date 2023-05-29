@@ -9,6 +9,7 @@ import primitives.Color;
 import primitives.Point;
 import primitives.Ray;
 import scene.Scene;
+import geometries.Intersectable.GeoPoint;
 
 /**
  * a class for basic ray tracing that extends RayTracerBase
@@ -30,12 +31,17 @@ public class RayTracerBasic extends RayTracerBase {
 
 	@Override
 	public Color traceRay(Ray ray) {
-		List<Point> intersections = scene.geometries.findIntersections(ray);
-		return (intersections != null) ? calcColor(ray.findClosestPoint(intersections)) : scene.background;
+		var intersections = scene.geometries.findGeoIntersections(ray);
+		return (intersections != null) ? calcColor(ray.findClosestGeoPoint(intersections)) : scene.background;
 	}
 
-	private Color calcColor(Point point) {
-		return scene.ambientLight.getIntensity();
+	/**
+	 * calculates the color of a given point on a geometry body
+	 * @param gp point on a geometry body
+	 * @return color of the point
+	 */
+	private Color calcColor(GeoPoint gp) {
+		return scene.ambientLight.getIntensity().add(gp.geometry.getEmission());
 	}
 
 }

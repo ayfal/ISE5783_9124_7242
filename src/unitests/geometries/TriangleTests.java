@@ -57,6 +57,7 @@ class TriangleTests {
 		List<Point> result = plane.findIntersections(ray);
 		assertNotNull(result, "plane's findIntersections() returned null");
 		result = triangle.findIntersections(ray);
+		assertNotNull(result, "triangle's findIntersections() returned null");
 		assertEquals(new Point(0, 0, 1), result.get(0), "triangle's findIntersections() wrong value");
 
 		// TC02: Ray does not intersect the triangle and is against the edge of the

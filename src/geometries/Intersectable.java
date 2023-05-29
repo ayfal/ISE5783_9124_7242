@@ -17,7 +17,10 @@ public abstract class Intersectable {
 	 * @param ray ray to intersect with
 	 * @return list of intersections
 	 */
-	public List<Point> findIntersections(Ray ray);
+	public final List<Point> findIntersections(Ray ray){
+		List<GeoPoint> gpl=findGeoIntersections(ray); 
+		return gpl==null ? null : gpl.stream().map(gp->gp.point).toList();
+	}
 
 	/**
 	 * GeoPoint is a static inner class that represents a point on a geometry body
@@ -60,9 +63,20 @@ public abstract class Intersectable {
 			return "GeoPoint [geometry=" + geometry + ", point=" + point + "]";
 		}
 	}
-	public List<GeoPoint> findGeoIntersections(Ray ray) {
+
+	/**
+	 * finds a geometry's intersections with a ray
+	 * @param ray ray to intersect with
+	 * @return list of intersections and the geometric body they are on
+	 */
+	public final List<GeoPoint> findGeoIntersections(Ray ray) {
 		return findGeoIntersectionsHelper(ray);
 	}
 
+	/**
+	 * finds a geometry's intersections with a ray
+	 * @param ray ray to intersect with
+	 * @return list of intersections and the geometric body they are on
+	 */
 	protected abstract List<GeoPoint> findGeoIntersectionsHelper(Ray ray);
 }

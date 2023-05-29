@@ -64,10 +64,4 @@ public class Cylinder extends Tube {
 		Point o = bottomCenter.add(dir.scale(t));
 		return p.subtract(o).normalize();
 	}
-
-	@Override
-	public List<Point> findIntersections(Ray ray) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
