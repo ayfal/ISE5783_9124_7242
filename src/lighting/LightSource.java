@@ -9,15 +9,16 @@ import primitives.Vector;
  */
 public interface LightSource {
     /**
-     * 
-     * @param p
-     * @return
-     */
+     * calculates the intensity of light at a point
+     * @param p point to calculate intensity at
+     * @return intensity of light at point
+     */    
     public Color getIntensity(Point p); 
+    
     /**
-     * 
-     * @param p
-     * @return
+     * calculates the direction of light at a point
+     * @param p point to calculate direction at
+     * @return direction of light at point
      */
     public Vector getL(Point p);
     
