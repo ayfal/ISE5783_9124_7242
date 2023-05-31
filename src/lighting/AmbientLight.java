@@ -7,14 +7,13 @@ import primitives.Color;
 import primitives.Double3;
 
 /**
- * class AmbientLight represents the ambient light in the scene
+ * class AmbientLight extends the class Light and represents the ambient light in the scene
  * 
  * @author Ariels
  *
  */
-public class AmbientLight {
-	private final Color intensity;
-
+public class AmbientLight extends Light {
+	
 	/**
 	 * constant ambient light with no intensity, aka no ambient light
 	 */
@@ -30,20 +29,12 @@ public class AmbientLight {
 	 * 
 	 */
 	public AmbientLight(Color iA, Double3 kA) {
-		intensity = iA.scale(kA);
+		super(iA.scale(kA));
 	}
 
 	public AmbientLight(Color iA, Double kA) {
-		intensity = iA.scale(kA);
+		super(iA.scale(kA));
 	}
 
-	// ***************** Getters/Setters ********************** //
-	/**
-	 * get the intensity of the color with ambient light
-	 * 
-	 * @return the intensity
-	 */
-	public Color getIntensity() {
-		return intensity;
-	}
+	
 }
