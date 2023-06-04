@@ -42,7 +42,7 @@ public class Scene {
 	/**
 	 * lights of the scene. default is empty
 	 */
-	List<LightSource> lights=new LinkedList<LightSource>();
+	public List<LightSource> lights=new LinkedList<LightSource>();
 
 	// ***************** Constructors ********************** //
 	/**

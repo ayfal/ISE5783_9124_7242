@@ -3,10 +3,10 @@
  */
 package renderer;
 
-import java.util.List;
+//import java.util.List;
 
 import primitives.Color;
-import primitives.Point;
+//import primitives.Point;
 import primitives.Ray;
 import scene.Scene;
 import geometries.Intersectable.GeoPoint;

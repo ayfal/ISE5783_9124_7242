@@ -191,7 +191,7 @@ public class Camera {
 		return new Ray(p0, pIJ.subtract(p0));
 	}
 
-	public void renderImage() {
+	public Camera renderImage() {//this was void, and we changed it to Camera for chaining in the tests provided
 		if (imageWriter == null)
 			throw new MissingResourceException("imageWriter is not defined", "ImageWriter", "imageWriter");
 		if (rayTracerBase == null)
@@ -204,6 +204,7 @@ public class Camera {
 				imageWriter.writePixel(j, i, rayTracerBase.traceRay(ray));
 			}
 		}
+		return this;
 		// throw new UnsupportedOperationException("not implemented");
 	}
 
