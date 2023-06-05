@@ -6,7 +6,7 @@ import primitives.Point;
 import primitives.Ray;
 
 /**
- * Intersectable is an abstarct class for all geometries that are able to
+ * Intersectable is an abstract class for all geometries that are able to
  * intersect
  * 
  * @author Ariel {David and Falik}
@@ -55,7 +55,7 @@ public abstract class Intersectable {
 		public boolean equals(Object obj) {
 			if (this == obj)
 				return true;
-			return (obj instanceof GeoPoint other) && geometry.equals(other.geometry) && point.equals(other.point);
+			return (obj instanceof GeoPoint other) && geometry == other.geometry && point.equals(other.point);
 		}
 
 		@Override

@@ -16,7 +16,7 @@ public abstract class Geometry extends Intersectable {
 	/**
 	 * color of the geometry body
 	 */
-	protected Color emission = Color.BLACK;
+	private Color emission = Color.BLACK;
 
 	/**
 	 * material of the geometry body

@@ -163,23 +163,21 @@ public class Camera {
 	 * 
 	 * @param nX number of columns
 	 * @param nY number of rows
-	 * @param j  column index
-	 * @param i  row index
+	 * @param j  column (X) index
+	 * @param i  row (Y) index
 	 * @return ray
 	 */
 	public Ray constructRay(int nX, int nY, int j, int i) {
-		// pixel measurments
+		// pixel measurements
 		double rY = height / nY;
 		double rX = width / nX;
 
 		// place pixel[i,j] in view grid center
 		Point pIJ = p0.add(vTo.scale(distance));
-		;
 
 		// calculate pixel[i,j] center
 		double yI = -(i - ((nY - 1) / 2d)) * rY;
 		double xJ = (j - ((nX - 1) / 2d)) * rX;
-		;
 
 		// shift to center of pixel[i,j]
 		if (!isZero(xJ))
@@ -205,7 +203,6 @@ public class Camera {
 			}
 		}
 		return this;
-		// throw new UnsupportedOperationException("not implemented");
 	}
 
 	/**
@@ -215,18 +212,15 @@ public class Camera {
 	 * @param color    color of the grid
 	 */
 	public void printGrid(int interval, Color color) {
-		if (imageWriter == null) {
+		if (imageWriter == null)
 			throw new MissingResourceException("imageWriter is not defined", "ImageWriter", "imageWriter");
-		}
+		
 		int nX = imageWriter.getNx();
 		int nY = imageWriter.getNy();
-
-		for (int i = 0; i < nX; i++) {
-			for (int j = 0; j < nY; j++) {
+		for (int i = 0; i < nX; i++)
+			for (int j = 0; j < nY; j++)
 				if (i % interval == 0 || j % interval == 0)
 					imageWriter.writePixel(i, j, color);
-			}
-		}
 	}
 
 	/**
@@ -234,9 +228,8 @@ public class Camera {
 	 * ImageWriter class
 	 */
 	public void writeToImage() {
-		if (imageWriter == null) {
+		if (imageWriter == null)
 			throw new MissingResourceException("imageWriter is not defined", "ImageWriter", "imageWriter");
-		}
 		imageWriter.writeToImage();
 	}
 

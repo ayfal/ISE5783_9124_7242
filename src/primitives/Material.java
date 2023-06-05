@@ -1,12 +1,12 @@
 package primitives;
 
 public class Material {
-	public Double3 kD = Double3.ZERO, kS = Double3.ZERO;// should this be in seperate lines?
-	public int nShininess = 0;
+	public Double3 kD = Double3.ZERO, kS = Double3.ZERO;// should this be in separate lines?
+	public int nShininess = 1;
 
 	// ***************** Setters ********************** //
 	/**
-	 * setter for kD in phong model
+	 * setter for kD in Phong model
 	 * 
 	 * @param kD diffuse attenuation factor
 	 * @return the material itself
@@ -28,7 +28,7 @@ public class Material {
 	}
 
 	/**
-	 * setter for kS in phong model
+	 * setter for kS in Phong model
 	 * 
 	 * @param kS specular attenuation factor
 	 * @return the material itself
