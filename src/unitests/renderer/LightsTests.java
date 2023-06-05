@@ -32,6 +32,8 @@ public class LightsTests {
    private static final Double3 KS3                     = new Double3(0.2, 0.4, 0.3);
 
    private final Material       material                = new Material().setKd(KD3).setKs(KS3).setShininess(SHININESS);
+   private final Material       material2                = new Material().setKd(KD3).setKs(KS3).setShininess(2000);
+   
    private final Color          trianglesLightColor     = new Color(800, 500, 250);
    private final Color          sphereLightColor        = new Color(800, 500, 0);
    private final Color          sphereColor             = new Color(BLUE).reduce(2);
@@ -57,10 +59,18 @@ public class LightsTests {
 
    private final Geometry       sphere                  = new Sphere(SPHERE_RADIUS, sphereCenter)
       .setEmission(sphereColor).setMaterial(new Material().setKd(KD).setKs(KS).setShininess(SHININESS));
+   
+      private final Geometry       sphere1                  = new Sphere(SPHERE_RADIUS, sphereCenter)
+      .setEmission(new Color(RED).reduce(3)).setMaterial(new Material().setKd(KD).setKs(KS).setShininess(1000));
+
    private final Geometry       triangle1               = new Triangle(vertices[0], vertices[1], vertices[2])
       .setMaterial(material);
    private final Geometry       triangle2               = new Triangle(vertices[0], vertices[1], vertices[3])
       .setMaterial(material);
+   private final Geometry       triangle3               = new Triangle(vertices[0], vertices[1], vertices[2])
+      .setMaterial(material2);
+   private final Geometry       triangle4               = new Triangle(vertices[0], vertices[1], vertices[3])
+      .setMaterial(material2);
 
    /** Produce a picture of a sphere lighted by a directional light */
    @Test
@@ -103,6 +113,24 @@ public class LightsTests {
          .writeToImage(); //
    }
 
+    /** Produce a picture of a sphere lighted by different light sources */
+    @Test
+    public void spherePolyLighted() {
+       scene1.geometries.add(sphere1);
+       scene1.lights.add(new SpotLight(sphereLightColor, sphereLightPosition, 
+         new Vector(200, 100, -2)).setKl(0.001).setKq(0.0001));
+
+       scene1.lights.add(new PointLight(sphereLightColor, sphereLightPosition).setKl(0.001).setKq(0.0002));
+
+       scene1.lights.add(new DirectionalLight(new Color(800, 600, 0), new Vector(-5, 4, -0.5)));
+ 
+       ImageWriter imageWriter = new ImageWriter("polyLightSphere", 500, 500);
+       camera1.setImageWriter(imageWriter) //
+          .setRayTracerBase(new RayTracerBasic(scene1)) //
+          .renderImage() //
+          .writeToImage(); //
+    }
+
    /** Produce a picture of two triangles lighted by a directional light */
    @Test
    public void trianglesDirectional() {
@@ -143,6 +171,23 @@ public class LightsTests {
          .renderImage() //
          .writeToImage(); //
    }
+
+   /** Produce a picture of two triangles lighted by a all lights */
+   @Test
+   public void trianglesPolyLights() {
+      scene2.geometries.add(triangle3, triangle4);
+      scene2.lights.add(new DirectionalLight(new Color(RED), new Vector(-2, -2, -2)));
+      scene2.lights.add(new PointLight(new Color(WHITE), trianglesLightPosition).setKl(0.001).setKq(0.0002));
+
+      scene2.lights.add(new SpotLight(new Color(BLUE), trianglesLightPosition, new Vector(-2, 10, -2)).setKl(0.001).setKq(0.0001));
+
+      ImageWriter imageWriter = new ImageWriter("polyLightTrianglesDirectional", 500, 500);
+      camera2.setImageWriter(imageWriter) //
+         .setRayTracerBase(new RayTracerBasic(scene2)) //
+         .renderImage() //
+         .writeToImage(); //
+   }
+
 
 //    /** Produce a picture of a sphere lighted by a narrow spotlight */
 //    @Test
