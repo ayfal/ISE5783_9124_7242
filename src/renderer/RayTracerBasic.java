@@ -56,15 +56,16 @@ public class RayTracerBasic extends RayTracerBase {
 		Vector v = ray.getDir (); 
 		Vector n = gp.geometry.getNormal(gp.point);
 		double nv = alignZero(n.dotProduct(v)); 
-		if (nv == 0) return color;
-		Material material = gp.geometry.getMaterial();
-		for (LightSource lightSource : scene.lights) {
-			Vector l = lightSource.getL(gp.point);
-			double nl = alignZero(n.dotProduct(l));
-			if (nl * nv > 0) {
-				Color iL = lightSource.getIntensity(gp.point);
-				color = color.add(iL.scale(calcDiffusive(material, nl)),
-				iL.scale(calcSpecular(material, n, l, nl, v)));
+		if (!isZero(nv)){
+			Material material = gp.geometry.getMaterial();
+			for (LightSource lightSource : scene.lights) {
+				Vector l = lightSource.getL(gp.point);
+				double nl = alignZero(n.dotProduct(l));
+				if (nl * nv > 0) {
+					Color iL = lightSource.getIntensity(gp.point);
+					color = color.add(iL.scale(calcDiffusive(material, nl)),
+					iL.scale(calcSpecular(material, n, l, nl, v)));
+				}
 			}
 		}
 		return color;		
