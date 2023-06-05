@@ -6,7 +6,8 @@ import primitives.Point;
 import primitives.Ray;
 
 /**
- * Intersectable is an abstarct class for all geometries that are able to intersect
+ * Intersectable is an abstarct class for all geometries that are able to
+ * intersect
  * 
  * @author Ariel {David and Falik}
  */
@@ -17,24 +18,24 @@ public abstract class Intersectable {
 	 * @param ray ray to intersect with
 	 * @return list of intersections
 	 */
-	public final List<Point> findIntersections(Ray ray){
-		List<GeoPoint> gpl=findGeoIntersections(ray); 
-		return gpl==null ? null : gpl.stream().map(gp->gp.point).toList();
+	public final List<Point> findIntersections(Ray ray) {
+		List<GeoPoint> gpl = findGeoIntersections(ray);
+		return gpl == null ? null : gpl.stream().map(gp -> gp.point).toList();
 	}
 
 	/**
 	 * GeoPoint is a static inner class that represents a point on a geometry body
 	 */
-	public static class GeoPoint { 
+	public static class GeoPoint {
 		/**
 		 * geometry body
 		 */
-		public Geometry geometry; 
+		public Geometry geometry;
 
 		/**
 		 * point on the geometry body
 		 */
-		public Point point; 
+		public Point point;
 
 		// ***************** Constructors ********************** //
 
@@ -54,10 +55,9 @@ public abstract class Intersectable {
 		public boolean equals(Object obj) {
 			if (this == obj)
 				return true;
-			return (obj instanceof GeoPoint other) && geometry.equals(other.geometry) && point.equals(other.point);					
+			return (obj instanceof GeoPoint other) && geometry.equals(other.geometry) && point.equals(other.point);
 		}
 
-		
 		@Override
 		public String toString() {
 			return "GeoPoint [geometry=" + geometry + ", point=" + point + "]";
@@ -66,6 +66,7 @@ public abstract class Intersectable {
 
 	/**
 	 * finds a geometry's intersections with a ray
+	 * 
 	 * @param ray ray to intersect with
 	 * @return list of intersections and the geometric body they are on
 	 */
@@ -75,6 +76,7 @@ public abstract class Intersectable {
 
 	/**
 	 * finds a geometry's intersections with a ray
+	 * 
 	 * @param ray ray to intersect with
 	 * @return list of intersections and the geometric body they are on
 	 */

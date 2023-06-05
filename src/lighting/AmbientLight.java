@@ -7,13 +7,14 @@ import primitives.Color;
 import primitives.Double3;
 
 /**
- * class AmbientLight extends the class Light and represents the ambient light in the scene
+ * class AmbientLight extends the class Light and represents the ambient light
+ * in the scene
  * 
  * @author Ariels
  *
  */
 public class AmbientLight extends Light {
-	
+
 	/**
 	 * constant ambient light with no intensity, aka no ambient light
 	 */
@@ -36,5 +37,4 @@ public class AmbientLight extends Light {
 		super(iA.scale(kA));
 	}
 
-	
 }

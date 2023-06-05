@@ -6,8 +6,8 @@ import primitives.Point;
 import primitives.Vector;
 
 /**
- * abstract class Geometry is the abstract class representing all geometries in a
- * Cartesian 3-Dimensional coordinate system.
+ * abstract class Geometry is the abstract class representing all geometries in
+ * a Cartesian 3-Dimensional coordinate system.
  * 
  * @author Ariel David
  */
@@ -23,7 +23,6 @@ public abstract class Geometry extends Intersectable {
 	 */
 	private Material material = new Material();
 
-
 	// ***************** Getters/Setters ********************** //
 	/**
 	 * get normal vector to the surface of the geometry body at a given point on the
@@ -36,6 +35,7 @@ public abstract class Geometry extends Intersectable {
 
 	/**
 	 * get the color of the geometry body
+	 * 
 	 * @return color of the geometry body
 	 */
 	public Color getEmission() {
@@ -44,6 +44,7 @@ public abstract class Geometry extends Intersectable {
 
 	/**
 	 * set the color of the geometry body
+	 * 
 	 * @param emission color of the geometry body
 	 * @return the geometry body
 	 */
@@ -54,6 +55,7 @@ public abstract class Geometry extends Intersectable {
 
 	/**
 	 * get the material of the geometry body
+	 * 
 	 * @return material of the geometry body
 	 */
 	public Material getMaterial() {
@@ -62,6 +64,7 @@ public abstract class Geometry extends Intersectable {
 
 	/**
 	 * set the material of the geometry body
+	 * 
 	 * @param m material of the geometry body
 	 * @return the geometry body itself
 	 */

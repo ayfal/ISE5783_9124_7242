@@ -12,11 +12,9 @@ import lighting.LightSource;
 import primitives.Color;
 
 /**
- * @author Ariel
- * //TODO doc every public and protected field. done
- * //TODO use finel wherever possible. done.
- * //TODO omit unnecessary {} in if/else/for/while
- * //TODO write private explicitly. done
+ * @author Ariel //TODO doc every public and protected field. done //TODO use
+ *         finel wherever possible. done. //TODO omit unnecessary {} in
+ *         if/else/for/while //TODO write private explicitly. done
  */
 public class Scene {
 	/**
@@ -42,7 +40,7 @@ public class Scene {
 	/**
 	 * lights of the scene. default is empty
 	 */
-	public List<LightSource> lights=new LinkedList<LightSource>();
+	public List<LightSource> lights = new LinkedList<LightSource>();
 
 	// ***************** Constructors ********************** //
 	/**
@@ -90,6 +88,7 @@ public class Scene {
 
 	/**
 	 * set the lights of the scene
+	 * 
 	 * @param l lights
 	 * @return the scene
 	 */

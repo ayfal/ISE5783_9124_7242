@@ -21,13 +21,13 @@ class ImageWriterTest {
 
 		final Color yellow = new Color(255d, 255d, 0);
 		final Color red = new Color(255, 0, 0);
-		
+
 		final int step = 50;
 
 		ImageWriter imageWriter = new ImageWriter("yellow red grid", nX, nY);
 		for (int i = 0; i < nX; i++)
 			for (int j = 0; j < nY; j++)
-					imageWriter.writePixel(i, j, (i % step == 0 || j % step == 0) ? red : yellow);
+				imageWriter.writePixel(i, j, (i % step == 0 || j % step == 0) ? red : yellow);
 		imageWriter.writeToImage();
 
 	}
