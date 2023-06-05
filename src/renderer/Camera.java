@@ -214,7 +214,7 @@ public class Camera {
 	public void printGrid(int interval, Color color) {
 		if (imageWriter == null)
 			throw new MissingResourceException("imageWriter is not defined", "ImageWriter", "imageWriter");
-		
+
 		int nX = imageWriter.getNx();
 		int nY = imageWriter.getNy();
 		for (int i = 0; i < nX; i++)

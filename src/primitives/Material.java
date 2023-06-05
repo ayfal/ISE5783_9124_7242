@@ -1,7 +1,22 @@
 package primitives;
 
+/**
+ * Class Material represents the characteristics of a geometry body.
+ */
 public class Material {
-	public Double3 kD = Double3.ZERO, kS = Double3.ZERO;// should this be in separate lines?
+	/**
+	 * specular attenuation factor of the material.
+	 */
+	public Double3 kD = Double3.ZERO;
+
+	/**
+	 * diffuse attenuation factor of the material.
+	 */
+	public Double3 kS = Double3.ZERO;
+
+	/**
+	 * shininess factor of the material.
+	 */
 	public int nShininess = 1;
 
 	// ***************** Setters ********************** //
