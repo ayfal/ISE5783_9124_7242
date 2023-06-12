@@ -6,7 +6,7 @@ import primitives.Color;
  * abstract class for light
  */
 abstract class Light {
-	private final Color intensity;
+	protected final Color intensity;
 
 	// ***************** Constructors ********************** //
 	/**

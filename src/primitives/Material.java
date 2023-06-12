@@ -1,13 +1,27 @@
 package primitives;
 
-public class Material {//add javadoc to class and fields
-	public Double3 kD = Double3.ZERO; 
-    public Double3 kS = Double3.ZERO;
-	public int nShininess = 0;
+/**
+ * Class Material represents the characteristics of a geometry body.
+ */
+public class Material {
+	/**
+	 * specular attenuation factor of the material.
+	 */
+	public Double3 kD = Double3.ZERO;
+
+	/**
+	 * diffuse attenuation factor of the material.
+	 */
+	public Double3 kS = Double3.ZERO;
+
+	/**
+	 * shininess factor of the material.
+	 */
+	public int nShininess = 1;
 
 	// ***************** Setters ********************** //
 	/**
-	 * setter for kD in phong model
+	 * setter for kD in Phong model
 	 * 
 	 * @param kD diffuse attenuation factor
 	 * @return the material itself
@@ -29,7 +43,7 @@ public class Material {//add javadoc to class and fields
 	}
 
 	/**
-	 * setter for kS in phong model
+	 * setter for kS in Phong model
 	 * 
 	 * @param kS specular attenuation factor
 	 * @return the material itself

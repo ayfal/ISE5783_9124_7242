@@ -3,14 +3,7 @@
  */
 package renderer;
 
-//import java.util.List;
-
-import primitives.Color;
-import primitives.Double3;
-import primitives.Material;
-//import primitives.Point;
-import primitives.Ray;
-import primitives.Vector;
+import primitives.*;
 import scene.Scene;
 import geometries.Intersectable.GeoPoint;
 import lighting.LightSource;
@@ -48,23 +41,23 @@ public class RayTracerBasic extends RayTracerBase {
 	 * @return color of the point
 	 */
 	private Color calcColor(GeoPoint gp, Ray ray) {
-		return scene.ambientLight.getIntensity().add(calcLocalEffects(gp, ray)); // gp.geometry.getEmission());
+		return scene.ambientLight.getIntensity().add(calcLocalEffects(gp, ray));
 	}
 
 	private Color calcLocalEffects(GeoPoint gp, Ray ray) {
 		Color color = gp.geometry.getEmission();
 		Vector v = ray.getDir();
 		Vector n = gp.geometry.getNormal(gp.point);
-		double nv = alignZero(n.dotProduct(v));
+		double nv = n.dotProduct(v);
 		if (!isZero(nv)) {
 			Material material = gp.geometry.getMaterial();
 			for (LightSource lightSource : scene.lights) {
 				Vector l = lightSource.getL(gp.point);
-				double nl = alignZero(n.dotProduct(l));
-				if (nl * nv > 0) {
+				double nl = n.dotProduct(l);
+				if (alignZero(nl * nv) > 0) {
 					Color iL = lightSource.getIntensity(gp.point);
-					color = color.add(iL.scale(calcDiffusive(material, nl)),
-							iL.scale(calcSpecular(material, n, l, nl, v)));
+					color = color.add(iL.scale(calcDiffusive(material, nl) //
+							.add(calcSpecular(material, n, l, nl, v))));
 				}
 			}
 		}
@@ -83,9 +76,9 @@ public class RayTracerBasic extends RayTracerBase {
 	 * @return The specular component factor.
 	 */
 	private Double3 calcSpecular(Material material, Vector n, Vector l, double nl, Vector v) {
-		Vector r = l.add(n.scale(-2 * nl));// decalared a variable for readablity
+		Vector r = l.add(n.scale(-2 * nl)); // declared a variable for readability
 		double minusVR = -alignZero(r.dotProduct(v));
-		return (minusVR <= 0) ? Double3.ZERO : material.kS.scale(Math.pow(minusVR, material.nShininess));
+		return minusVR <= 0 ? Double3.ZERO : material.kS.scale(Math.pow(minusVR, material.nShininess));
 	}
 
 	/**
@@ -96,7 +89,7 @@ public class RayTracerBasic extends RayTracerBase {
 	 * @return The diffuse component factor.
 	 */
 	private Double3 calcDiffusive(Material material, double nl) {
-		return material.kD.scale(Math.abs(nl));
+		return material.kD.scale(nl < 0 ? -nl : nl);
 	}
 
 }

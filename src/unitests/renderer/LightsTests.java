@@ -59,8 +59,9 @@ public class LightsTests {
 	private final Geometry sphere = new Sphere(SPHERE_RADIUS, sphereCenter).setEmission(sphereColor)
 			.setMaterial(new Material().setKd(KD).setKs(KS).setShininess(SHININESS));
 
-	private final Geometry sphere1 = new Sphere(SPHERE_RADIUS, sphereCenter).setEmission(new Color(RED).reduce(3))
-			.setMaterial(new Material().setKd(KD).setKs(KS).setShininess(1000));
+	private final Geometry sphere1 = new Sphere(SPHERE_RADIUS, sphereCenter)
+			.setEmission(new Color(120, 254, 255).reduce(1.2))
+			.setMaterial(new Material().setKd(KD).setKs(KS).setShininess(2000));
 
 	private final Geometry triangle1 = new Triangle(vertices[0], vertices[1], vertices[2]).setMaterial(material);
 	private final Geometry triangle2 = new Triangle(vertices[0], vertices[1], vertices[3]).setMaterial(material);
@@ -110,13 +111,15 @@ public class LightsTests {
 	/** Produce a picture of a sphere lighted by different light sources */
 	@Test
 	public void spherePolyLighted() {
+		// z = light distance from object (+ far, -close), y = height (+ up, - down), x
+		// = width (- left, + right)
 		scene1.geometries.add(sphere1);
-		scene1.lights.add(new SpotLight(sphereLightColor, sphereLightPosition, new Vector(200, 100, -2)).setKl(0.001)
+		scene1.lights.add(new SpotLight(new Color(800, 500, 0), new Point(0, 90, 1), new Vector(0, -1, 0)).setKl(0.001)
 				.setKq(0.0001));
 
-		scene1.lights.add(new PointLight(sphereLightColor, sphereLightPosition).setKl(0.001).setKq(0.0002));
+		scene1.lights.add(new PointLight(new Color(GREEN), new Point(0, -80, 10)).setKl(0.0001).setKq(0.0002));
 
-		scene1.lights.add(new DirectionalLight(new Color(800, 600, 0), new Vector(-5, 4, -0.5)));
+		scene1.lights.add(new DirectionalLight(new Color(BLUE), new Vector(0, -0.5, -1)));
 
 		ImageWriter imageWriter = new ImageWriter("polyLightSphere", 500, 500);
 		camera1.setImageWriter(imageWriter) //

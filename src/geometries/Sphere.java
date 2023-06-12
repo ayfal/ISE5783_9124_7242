@@ -49,6 +49,7 @@ public class Sphere extends RadialGeometry {
 	public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
 		if (ray.getP0().equals(center))
 			return List.of(new GeoPoint(this, ray.getPoint(radius)));
+
 		Vector u = center.subtract(ray.getP0());
 		double tm = ray.getDir().dotProduct(u);
 		double d2 = u.lengthSquared() - (tm * tm);

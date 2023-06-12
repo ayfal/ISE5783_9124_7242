@@ -3,3 +3,5 @@ intersectable
 ariel
 david
 falik
+specular
+phong

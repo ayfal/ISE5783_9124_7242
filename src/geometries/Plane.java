@@ -85,6 +85,7 @@ public class Plane extends Geometry {
 		double nv = alignZero(normal.dotProduct(ray.getDir()));
 		if (isZero(nv) || p0.equals(ray.getP0()))
 			return null;
+
 		double nQMinusP0 = alignZero(normal.dotProduct(p0.subtract(ray.getP0())));
 		double t = alignZero(nQMinusP0 / nv);
 		return t > 0 ? List.of(new GeoPoint(this, ray.getPoint(t))) : null;

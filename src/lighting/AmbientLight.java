@@ -26,14 +26,19 @@ public class AmbientLight extends Light {
 	 * constructs an ambient light with a given color and attenuation factor
 	 * 
 	 * @param iA color with base intensity
-	 * @param kA attenuation factor
-	 * 
+	 * @param kA attenuation factor (according to RGB)
 	 */
 	public AmbientLight(Color iA, Double3 kA) {
 		super(iA.scale(kA));
 	}
 
-	public AmbientLight(Color iA, Double kA) {
+	/**
+	 * constructs an ambient light with a given color and attenuation factor
+	 * 
+	 * @param iA color with base intensity
+	 * @param kA attenuation factor
+	 */
+	public AmbientLight(Color iA, double kA) {
 		super(iA.scale(kA));
 	}
 
