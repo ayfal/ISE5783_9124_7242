@@ -1,5 +1,6 @@
 package lighting;
 
+import geometries.Intersectable.GeoPoint;
 import primitives.Color;
 import primitives.Point;
 import primitives.Vector;
@@ -23,5 +24,12 @@ public interface LightSource {
 	 * @return direction of light at point
 	 */
 	public Vector getL(Point p);
+
+	/**
+	 * calculates the distance between the light source and a point
+	 * @param point point to calculate distance from
+	 * @return distance between the light source and a point
+	 */
+	public double getDistance(Point point);
 
 }
