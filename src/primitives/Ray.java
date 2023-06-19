@@ -18,7 +18,7 @@ public class Ray {
 
 	private final Vector dir;
 
-	private static final double DELTA = 0.1; 
+	private static final double DELTA = 0.1;
 
 	// constructors
 	/**
@@ -34,9 +34,10 @@ public class Ray {
 
 	/**
 	 * constructor for a ray with a delta
-	 * @param head the head of the ray
+	 * 
+	 * @param head      the head of the ray
 	 * @param direction the direction of the ray
-	 * @param normal the normal of the ray
+	 * @param normal    the normal of the ray
 	 */
 	public Ray(Point head, Vector direction, Vector normal) {
 		p0 = head.add(normal.scale(normal.dotProduct(direction) > 0 ? DELTA : -DELTA));

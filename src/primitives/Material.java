@@ -27,7 +27,7 @@ public class Material {
 	/**
 	 * reflection attenuation factor of the material.
 	 */
-	 public Double3 kR = Double3.ZERO;
+	public Double3 kR = Double3.ZERO;
 
 	// ***************** Setters ********************** //
 	/**
@@ -94,7 +94,7 @@ public class Material {
 	public Material setKt(Double3 kT) {
 		this.kT = kT;
 		return this;
-	}	
+	}
 
 	/**
 	 * setter for kT in transparency model

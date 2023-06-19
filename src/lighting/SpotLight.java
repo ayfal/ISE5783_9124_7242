@@ -29,5 +29,5 @@ public class SpotLight extends PointLight {
 	public Color getIntensity(Point p) {
 		double projection = alignZero(direction.dotProduct(getL(p)));
 		return (projection <= 0) ? Color.BLACK : super.getIntensity(p).scale(projection);
-	}	
+	}
 }
