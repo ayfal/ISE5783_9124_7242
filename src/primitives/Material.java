@@ -19,6 +19,16 @@ public class Material {
 	 */
 	public int nShininess = 1;
 
+	/**
+	 * refraction attenuation factor of the material.
+	 */
+	public Double3 kT = Double3.ZERO;
+
+	/**
+	 * reflection attenuation factor of the material.
+	 */
+	 public Double3 kR = Double3.ZERO;
+
 	// ***************** Setters ********************** //
 	/**
 	 * setter for kD in Phong model
@@ -72,6 +82,50 @@ public class Material {
 	 */
 	public Material setShininess(int ns) {
 		nShininess = ns;
+		return this;
+	}
+
+	/**
+	 * setter for kT in transparency model
+	 * 
+	 * @param kT refraction attenuation factor
+	 * @return the material itself
+	 */
+	public Material setKt(Double3 kT) {
+		this.kT = kT;
+		return this;
+	}	
+
+	/**
+	 * setter for kT in transparency model
+	 * 
+	 * @param kT refraction attenuation factor
+	 * @return the material itself
+	 */
+	public Material setKt(double kT) {
+		this.kT = new Double3(kT);
+		return this;
+	}
+
+	/**
+	 * setter for kR in reflection model
+	 * 
+	 * @param kR reflection attenuation factor
+	 * @return the material itself
+	 */
+	public Material setKr(Double3 kR) {
+		this.kR = kR;
+		return this;
+	}
+
+	/**
+	 * setter for kR in reflection model
+	 * 
+	 * @param kR reflection attenuation factor
+	 * @return the material itself
+	 */
+	public Material setKr(double kR) {
+		this.kR = new Double3(kR);
 		return this;
 	}
 

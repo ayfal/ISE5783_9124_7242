@@ -90,7 +90,7 @@ public class Polygon extends Geometry {
 
 	@Override
 	public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
-		// TODO Auto-generated method stub
+		// TODO should this be deleted?
 		return null;
 	}
 
