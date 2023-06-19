@@ -53,7 +53,7 @@ public class RayTracerBasic extends RayTracerBase {
 	}
 
 	private Color calcColor(GeoPoint gp, Ray ray, int level, Double3 k) {
-		Color color = calcLocalEffects(gp, ray);
+		Color color = calcLocalEffects(gp, ray, k);
 		return level==1 ? color : color.add(calcGlobalEffects(gp, ray, level, k));
 	}
 
@@ -63,7 +63,7 @@ public class RayTracerBasic extends RayTracerBase {
 	 * @param ray the ray from the camera to the point
 	 * @return the color of the point
 	 */
-	private Color calcLocalEffects(GeoPoint gp, Ray ray) {
+	private Color calcLocalEffects(GeoPoint gp, Ray ray, Double3 k) {
 		Color color = gp.geometry.getEmission();
 		Vector v = ray.getDir();
 		Vector n = gp.geometry.getNormal(gp.point);
@@ -74,8 +74,10 @@ public class RayTracerBasic extends RayTracerBase {
 				Vector l = lightSource.getL(gp.point);
 				double nl = n.dotProduct(l);
 				if (alignZero(nl * nv) > 0) {
-					if (unshaded(gp, lightSource, l, n)){
-						Color iL = lightSource.getIntensity(gp.point);
+					//if (unshaded(gp, lightSource, l, n))
+					Double3 ktr = transparency(gp, lightSource, l, n);
+					if (ktr.product(k).greaterThan(MIN_CALC_COLOR_K)){
+						Color iL = lightSource.getIntensity(gp.point).scale(ktr);
 					    color = color.add(iL.scale(calcDiffusive(material, nl) //
 							.add(calcSpecular(material, n, l, nl, v))));
 					}
@@ -95,7 +97,7 @@ public class RayTracerBasic extends RayTracerBase {
 	 * @return color
 	 */
 	private Color calcGlobalEffects(GeoPoint gp, Ray ray, int level, Double3 k) {
-		Color color = Color.BLACK;
+		//Color color = Color.BLACK;
 		Vector v = ray.getDir();
 		Vector n = gp.geometry.getNormal(gp.point);
 		Material material = gp.geometry.getMaterial();
@@ -155,18 +157,41 @@ public class RayTracerBasic extends RayTracerBase {
 	 * @param n the normal vector
 	 * @return true if the point is unshaded, false otherwise
 	 */
-	private boolean unshaded(GeoPoint gp, LightSource light, Vector l, Vector n) {
-		Ray lightRay = new Ray(gp.point, l.scale(-1), n);
+	// private boolean unshaded(GeoPoint gp, LightSource light, Vector l, Vector n) {
+	// 	Ray lightRay = new Ray(gp.point, l.scale(-1), n);
+	// 	List<GeoPoint> intersections = scene.geometries.findGeoIntersections(lightRay);
+	// 	if (intersections == null)
+	// 		return true;
+	// 	double lightDistance = light.getDistance(gp.point);
+	// 	for (GeoPoint geoPoint : intersections) {
+	// 		if (alignZero(geoPoint.point.distance(gp.point) - lightDistance) <= 0 //
+	// 			&& geoPoint.geometry.getMaterial().kT == Double3.ZERO) //
+	// 			return false;
+	// 	}
+	// 	return true;		
+	// }
+
+	/**
+	 * Calculate the transparency of the point (how much light passes through it)
+	 * @param geoPoint the point
+	 * @param ls the light source
+	 * @param l the light source direction
+	 * @param n the normal vector
+	 * @return the transparency of the point
+	 */
+	private Double3 transparency(GeoPoint geoPoint, LightSource ls, Vector l, Vector n) {
+		Vector lightDirection = l.scale(-1); // from point to light source
+		Ray lightRay = new Ray(geoPoint.point, lightDirection, n);
 		List<GeoPoint> intersections = scene.geometries.findGeoIntersections(lightRay);
-		if (intersections == null)
-			return true;
-		double lightDistance = light.getDistance(gp.point);
-		for (GeoPoint geoPoint : intersections) {
-			if (alignZero(geoPoint.point.distance(gp.point) - lightDistance) <= 0 //
-				&& geoPoint.geometry.getMaterial().kT == Double3.ZERO) //
-				return false;
+		Double3 ktr = Double3.ONE;
+		if (intersections == null) return ktr;
+		double lightDistance = ls.getDistance(geoPoint.point);
+		for (GeoPoint gp : intersections){
+			ktr = ktr.product(gp.geometry.getMaterial().kT);
+			if (ktr.lowerThan(MIN_CALC_COLOR_K) || alignZero(geoPoint.point.distance(gp.point) - lightDistance) > 0)
+				return Double3.ZERO;
 		}
-		return true;		
+		return ktr;
 	}
 
 	/**

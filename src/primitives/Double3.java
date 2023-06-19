@@ -137,10 +137,20 @@ public class Double3 {
 	 * Checks whether all the numbers are lower than three numbers in another triad
 	 * 
 	 * @param other other triad
-	 * @return true if all the numbers are less that appropriate numbers in other
+	 * @return true if all the numbers are less than appropriate numbers in other
 	 *         triad, false otherwise
 	 */
 	public boolean lowerThan(Double3 other) {
 		return d1 < other.d1 && d2 < other.d2 && d3 < other.d3;
+	}
+
+	/**
+	 * Checks whether all the numbers are greater than test number
+	 * 
+	 * @param other test number
+	 * @return true if all the numbers are more than k, false otherwise
+	 */
+	public boolean greaterThan(double k) {
+		return d1 > k && d2 > k && d3 > k;
 	}
 }
