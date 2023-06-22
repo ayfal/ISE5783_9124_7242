@@ -1,5 +1,8 @@
 package lighting;
 
+import java.util.List;
+
+import geometries.Intersectable.GeoPoint;
 import primitives.Color;
 import primitives.Point;
 import primitives.Vector;
@@ -12,6 +15,7 @@ public class PointLight extends Light implements LightSource {
 	private double kC = 1;
 	private double kL = 0;
 	private double kQ = 0;
+	private static final int SHADOW_GRID_SIZE=10;
 
 	// ***************** Constructors ********************** //
 
@@ -78,6 +82,13 @@ public class PointLight extends Light implements LightSource {
 	@Override
 	public double getDistance(Point point) {
 		return position.distance(point);
+	}
+
+	public List<Vector> getShadowGridVectors(GeoPoint geoPoint) {
+		for (int i = -SHADOW_GRID_SIZE; i < SHADOW_GRID_SIZE; i++) {
+			for (int j = -SHADOW_GRID_SIZE; j < SHADOW_GRID_SIZE; j++) {
+				Point p = position.add(new Vector(i, j, 0));
+		return null;
 	}
 
 }
