@@ -2,10 +2,7 @@ package lighting;
 
 import java.util.List;
 
-import geometries.Intersectable.GeoPoint;
-import primitives.Color;
-import primitives.Point;
-import primitives.Vector;
+import primitives.*;
 
 /**
  * class for point light

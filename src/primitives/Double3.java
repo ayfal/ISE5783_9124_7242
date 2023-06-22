@@ -145,12 +145,12 @@ public class Double3 {
 	}
 
 	/**
-	 * Checks whether all the numbers are greater than test number
+	 * Checks whether some of the numbers are greater than test number
 	 * 
 	 * @param other test number
-	 * @return true if all the numbers are more than k, false otherwise
+	 * @return true if some of the numbers are more than k, false otherwise
 	 */
 	public boolean greaterThan(double k) {
-		return d1 > k && d2 > k && d3 > k;
+		return d1 > k || d2 > k || d3 > k;
 	}
 }
