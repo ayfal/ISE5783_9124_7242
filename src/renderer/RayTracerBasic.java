@@ -52,7 +52,7 @@ public class RayTracerBasic extends RayTracerBase {
 	}
 
 	/**
-	 * calculates the color ///////////
+	 * calculates the color made by a ray on a given point on a geometry. takes into account global and local effects
 	 * 
 	 * @param gp    the point on the geometry body
 	 * @param ray   the light ray
@@ -89,7 +89,7 @@ public class RayTracerBasic extends RayTracerBase {
 			double nl = n.dotProduct(l);
 			if (alignZero(nl * nv) > 0) {
 				// former code: if (unshaded(gp, lightSource, l, n))
-				Double3 ktr = transparency(gp, lightSource, l, n);
+				Double3 ktr = softenShadows(gp, lightSource, l, n);
 				if (ktr.product(k).greaterThan(MIN_CALC_COLOR_K)) {
 					Color iL = lightSource.getIntensity(gp.point).scale(ktr);
 					color = color.add(iL.scale(calcDiffusive(material, nl) //
@@ -182,7 +182,7 @@ public class RayTracerBasic extends RayTracerBase {
 		double lightDistance = light.getDistance(gp.point);
 		for (GeoPoint geoPoint : intersections) {
 			if (alignZero(geoPoint.point.distance(gp.point) - lightDistance) <= 0
-					&& geoPoint.geometry.getMaterial().kT == Double3.ZERO)
+					&& geoPoint.geometry.getMaterial().kT == Double3.ZERO) //should we use this, just without 
 				return false;
 		}
 		return true;
@@ -253,4 +253,11 @@ public class RayTracerBasic extends RayTracerBase {
 				ray.findClosestGeoPoint(intersections); // returns closest point
 	}
 
+	private Double3 softenShadows(GeoPoint geoPoint, LightSource light, Vector l, Vector n) {
+		List<Vector> shadowVectors = light.getShadowGridVectors(geoPoint);
+		var sumOfKtr = Double3.ZERO;
+		for (var shadowVector : shadowVectors) 
+			sumOfKtr.add(transparency(geoPoint, light, shadowVector, n));
+		return sumOfKtr.reduce(shadowVectors.size());
+	}
 }

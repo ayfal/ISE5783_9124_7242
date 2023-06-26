@@ -189,20 +189,35 @@ public class Camera {
 		return new Ray(p0, pIJ.subtract(p0));
 	}
 
+	/**
+	 * renders an image
+	 * @return camera (for chaining)
+	 */
 	public Camera renderImage() {// this was void, and we changed it to Camera for chaining in the tests provided
 		if (imageWriter == null)
 			throw new MissingResourceException("imageWriter is not defined", "ImageWriter", "imageWriter");
 		if (rayTracerBase == null)
 			throw new MissingResourceException("rayTracerBase is not defined", "RayTracerBase", "rayTracerBase");
-		int nX = imageWriter.getNx();
-		int nY = imageWriter.getNy();
-		for (int i = 0; i < nY; i++) {
-			for (int j = 0; j < nX; j++) {
-				Ray ray = constructRay(nX, nY, j, i);
-				imageWriter.writePixel(j, i, rayTracerBase.traceRay(ray));
+			int nX = imageWriter.getNx();
+			int nY = imageWriter.getNy();
+			for (int i = 0; i < nY; i++) {
+				for (int j = 0; j < nX; j++) {
+					imageWriter.writePixel(j, i, castRay(nX, nY, j, i));
+				}
 			}
+			return this;
 		}
-		return this;
+		
+	/**
+	 * cast ray through pixel and get color
+	 * @param nX number of columns
+	 * @param nY number of rows
+	 * @param j column (X) index
+	 * @param i row (Y) index
+	 * @return color
+	 */
+	private Color castRay(int nX, int nY, int j, int i) {
+		return rayTracerBase.traceRay(constructRay(nX, nY, j, i));
 	}
 
 	/**
@@ -232,5 +247,6 @@ public class Camera {
 			throw new MissingResourceException("imageWriter is not defined", "ImageWriter", "imageWriter");
 		imageWriter.writeToImage();
 	}
+
 
 }

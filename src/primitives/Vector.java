@@ -129,6 +129,17 @@ public class Vector extends Point {
 	public Vector normalize() {
 		return new Vector(this.point.reduce(this.length()));
 	}
+	
+	/**
+	 * calculates a new vector that is orthogonal to the input vector and normalized
+	 * @param vTo the input vector
+	 * @return the normalized orthogonal new vector
+	 */
+	public Vector getNormalizedOrthogonalVector() { 
+		return (this.getY() == 0 && this.getZ() == 0) ? new Vector(0, 1, 0):
+			new Vector(0, this.getZ(), -this.getY()).normalize(); 
+	}
+	
 
 	@Override
 	public String toString() {

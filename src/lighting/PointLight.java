@@ -1,7 +1,9 @@
 package lighting;
 
+import java.util.LinkedList;
 import java.util.List;
 
+import geometries.Intersectable.GeoPoint;
 import primitives.*;
 
 /**
@@ -12,7 +14,9 @@ public class PointLight extends Light implements LightSource {
 	private double kC = 1;
 	private double kL = 0;
 	private double kQ = 0;
-	private static final int SHADOW_GRID_SIZE = 10;
+	private static final double SHADOW_PIXEL_SIZE = 0.1;
+	private static int shadowGridSize = 0;
+
 
 	// ***************** Constructors ********************** //
 
@@ -62,6 +66,17 @@ public class PointLight extends Light implements LightSource {
 		return this;
 	}
 
+	/**
+	 * setter for shadow grid size
+	 * 
+	 * @param sgs shadow grid size
+	 * @return the light itself
+	 */
+	public PointLight setShadowGridSize(int sgs) {
+		shadowGridSize = sgs;
+		return this;
+	}
+
 	// ***************** Functions ********************** //
 
 	@Override
@@ -81,10 +96,30 @@ public class PointLight extends Light implements LightSource {
 		return position.distance(point);
 	}
 
-	/*
-	 * public List<Vector> getShadowGridVectors(GeoPoint geoPoint) { for (int i =
-	 * -SHADOW_GRID_SIZE; i < SHADOW_GRID_SIZE; i++) { for (int j =
-	 * -SHADOW_GRID_SIZE; j < SHADOW_GRID_SIZE; j++) { Point p = position.add(new
-	 * Vector(i, j, 0)); return null; }
-	 */
+	@Override
+	public List<Vector> getShadowGridVectors(GeoPoint gp) {
+		if (shadowGridSize <= 0) return List.of(getL(gp.point));
+		//create a vactor from the position of the light to the point
+		Vector vTo = gp.point.subtract(position).normalize();
+		//create a vector that is orthogonal to vTo
+		Vector vRight = vTo.getNormalizedOrthogonalVector();
+		//create a vector that is orthogonal to vTo and vRight
+		Vector vUp = vTo.crossProduct(vRight);
+		List<Vector> shadowGridVectors = new LinkedList<>();
+		for (int i = -shadowGridSize; i < shadowGridSize; i++) 
+			for (int j = -shadowGridSize; j < shadowGridSize; j++) 
+				shadowGridVectors.add(constructShadowVector(vRight, vUp, i, j, gp));
+		return shadowGridVectors;
+	}
+
+	private Vector constructShadowVector(Vector vRight, Vector vUp, int i, int j, GeoPoint gp) {
+		//randomize the coordinates of the point on the grid
+		double xJ = j + Math.random() * SHADOW_PIXEL_SIZE;//these fileds are just for readability
+		double yI = i + Math.random() * SHADOW_PIXEL_SIZE;
+		var pIJ = position.add(vRight.scale(xJ)).add(vUp.scale(yI));
+		return new Ray(pIJ, pIJ.subtract(gp.point)).getDir();//needs to be refactored 
+		//because unshaded() uses the vector to create a ray
+	}
+
+	 
 }
