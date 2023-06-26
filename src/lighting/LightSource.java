@@ -41,6 +41,4 @@ public interface LightSource {
 	 */
 	public List<Vector> getShadowGridVectors(GeoPoint gp);
 
-	
-
 }

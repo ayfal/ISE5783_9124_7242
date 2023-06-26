@@ -52,7 +52,8 @@ public class RayTracerBasic extends RayTracerBase {
 	}
 
 	/**
-	 * calculates the color made by a ray on a given point on a geometry. takes into account global and local effects
+	 * calculates the color made by a ray on a given point on a geometry. takes into
+	 * account global and local effects
 	 * 
 	 * @param gp    the point on the geometry body
 	 * @param ray   the light ray
@@ -182,7 +183,7 @@ public class RayTracerBasic extends RayTracerBase {
 		double lightDistance = light.getDistance(gp.point);
 		for (GeoPoint geoPoint : intersections) {
 			if (alignZero(geoPoint.point.distance(gp.point) - lightDistance) <= 0
-					&& geoPoint.geometry.getMaterial().kT == Double3.ZERO) //should we use this, just without 
+					&& geoPoint.geometry.getMaterial().kT == Double3.ZERO) // should we use this, just without
 				return false;
 		}
 		return true;
@@ -256,8 +257,8 @@ public class RayTracerBasic extends RayTracerBase {
 	private Double3 softenShadows(GeoPoint geoPoint, LightSource light, Vector l, Vector n) {
 		List<Vector> shadowVectors = light.getShadowGridVectors(geoPoint);
 		var sumOfKtr = Double3.ZERO;
-		for (var shadowVector : shadowVectors) 
-			sumOfKtr.add(transparency(geoPoint, light, shadowVector, n));
+		for (var shadowVector : shadowVectors)
+			sumOfKtr = sumOfKtr.add(transparency(geoPoint, light, shadowVector, n));
 		return sumOfKtr.reduce(shadowVectors.size());
 	}
 }
