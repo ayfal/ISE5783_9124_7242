@@ -15,7 +15,7 @@ public class PointLight extends Light implements LightSource {
 	private double kL = 0;
 	private double kQ = 0;
 	private static final double SHADOW_PIXEL_SIZE = 0.1;
-	private static int shadowGridSize = 0;
+	private int shadowGridSize = 0;
 
 	// ***************** Constructors ********************** //
 
@@ -97,10 +97,10 @@ public class PointLight extends Light implements LightSource {
 
 	@Override
 	public List<Vector> getShadowGridVectors(GeoPoint gp) {
-		if (shadowGridSize <= 0)
-			return List.of(getL(gp.point));
 		// create a vactor from the position of the light to the point
-		Vector vTo = gp.point.subtract(position).normalize();
+		Vector vTo = getL(gp.point);
+		if (shadowGridSize <= 0)
+			return List.of(vTo);
 		// create a vector that is orthogonal to vTo
 		Vector vRight = vTo.getNormalizedOrthogonalVector();
 		// create a vector that is orthogonal to vTo and vRight
@@ -114,10 +114,10 @@ public class PointLight extends Light implements LightSource {
 
 	private Vector constructShadowVector(Vector vRight, Vector vUp, int i, int j, GeoPoint gp) {
 		// randomize the coordinates of the point on the grid
-		double xJ = j + Math.random() * SHADOW_PIXEL_SIZE;// these fileds are just for readability
+		double xJ = j + Math.random() * SHADOW_PIXEL_SIZE;// these fields are just for readability
 		double yI = i + Math.random() * SHADOW_PIXEL_SIZE;
 		var pIJ = position.add(vRight.scale(xJ)).add(vUp.scale(yI));
-		return new Ray(pIJ, pIJ.subtract(gp.point)).getDir();// needs to be refactored
+		return new Ray(gp.point, gp.point.subtract(pIJ)).getDir();// needs to be refactored
 		// because unshaded() uses the vector to create a ray
 	}
 
