@@ -16,7 +16,7 @@ import scene.Scene;
  * @author Dan
  */
 public class ShadowTests {	
-	private static final int SHADOW_GIRD_SIZE = 3;
+	private static final int SHADOW_GIRD_SIZE = 8;
 	private Intersectable sphere = new Sphere(60d, new Point(0, 0, -200)) //
 	.setEmission(new Color(BLUE)) //
 	.setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(30));

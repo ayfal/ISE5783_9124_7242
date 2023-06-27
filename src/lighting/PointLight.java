@@ -14,7 +14,7 @@ public class PointLight extends Light implements LightSource {
 	private double kC = 1;
 	private double kL = 0;
 	private double kQ = 0;
-	private static final double SHADOW_PIXEL_SIZE = 0.1;
+	private static final double SHADOW_PIXEL_SIZE = 0.00005;
 	private int shadowGridSize = 0;
 
 	// ***************** Constructors ********************** //
