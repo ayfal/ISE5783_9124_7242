@@ -2,6 +2,7 @@ package lighting;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 import geometries.Intersectable.GeoPoint;
 import primitives.*;
@@ -14,7 +15,7 @@ public class PointLight extends Light implements LightSource {
 	private double kC = 1;
 	private double kL = 0;
 	private double kQ = 0;
-	private static final double SHADOW_PIXEL_SIZE = 0.00005;
+	private static final double SHADOW_PIXEL_SIZE = 1;
 	private int shadowGridSize = 0;
 
 	// ***************** Constructors ********************** //
@@ -96,9 +97,7 @@ public class PointLight extends Light implements LightSource {
 	}
 
 	@Override
-	public List<Vector> getShadowGridVectors(GeoPoint gp) {
-		// create a vactor from the position of the light to the point
-		Vector vTo = getL(gp.point);
+	public List<Vector> getShadowGridVectors(GeoPoint gp, Vector vTo) {
 		if (shadowGridSize <= 0)
 			return List.of(vTo);
 		// create a vector that is orthogonal to vTo
@@ -112,13 +111,22 @@ public class PointLight extends Light implements LightSource {
 		return shadowGridVectors;
 	}
 
+	Random rand = new Random();
+	/**
+	 * constructs a vector from the light source gird to a point on the geometry
+	 * @param vRight vector orthogonal to vTo
+	 * @param vUp vector orthogonal to vTo and vRight
+	 * @param i index of the row
+	 * @param j index of the column
+	 * @param gp the point on the geometry
+	 * @return the vector from the light source gird to the point on the geometry
+	 */
 	private Vector constructShadowVector(Vector vRight, Vector vUp, int i, int j, GeoPoint gp) {
 		// randomize the coordinates of the point on the grid
-		double xJ = j + Math.random() * SHADOW_PIXEL_SIZE;// these fields are just for readability
-		double yI = i + Math.random() * SHADOW_PIXEL_SIZE;
+		double xJ = (j - rand.nextDouble()) * SHADOW_PIXEL_SIZE;// these 3 fields are just for readability
+		double yI = -(i - rand.nextDouble()) * SHADOW_PIXEL_SIZE;
 		var pIJ = position.add(vRight.scale(xJ)).add(vUp.scale(yI));
-		return new Ray(gp.point, gp.point.subtract(pIJ)).getDir();// needs to be refactored
-		// because unshaded() uses the vector to create a ray
+		return gp.point.subtract(pIJ).normalize();
 	}
 
 }

@@ -254,8 +254,16 @@ public class RayTracerBasic extends RayTracerBase {
 				ray.findClosestGeoPoint(intersections); // returns closest point
 	}
 
+	/**
+	 * calculates the color of a point with soft shadows
+	 * @param geoPoint the point
+	 * @param light the light source
+	 * @param l the light source direction
+	 * @param n the normal vector
+	 * @return the color of the point
+	 */
 	private Double3 softenShadows(GeoPoint geoPoint, LightSource light, Vector l, Vector n) {
-		List<Vector> shadowVectors = light.getShadowGridVectors(geoPoint);
+		List<Vector> shadowVectors = light.getShadowGridVectors(geoPoint, l);
 		var sumOfKtr = Double3.ZERO;
 		for (var shadowVector : shadowVectors)
 			sumOfKtr = sumOfKtr.add(transparency(geoPoint, light, shadowVector, n));

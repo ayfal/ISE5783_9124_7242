@@ -44,7 +44,7 @@ public class DirectionalLight extends Light implements LightSource {
 	}
 
 	@Override
-	public List<Vector> getShadowGridVectors(GeoPoint gp) {
+	public List<Vector> getShadowGridVectors(GeoPoint gp, Vector vTo) {
 		return List.of(direction);
 	}
 }
