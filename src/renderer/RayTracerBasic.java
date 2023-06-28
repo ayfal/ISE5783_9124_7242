@@ -256,10 +256,11 @@ public class RayTracerBasic extends RayTracerBase {
 
 	/**
 	 * calculates the color of a point with soft shadows
+	 * 
 	 * @param geoPoint the point
-	 * @param light the light source
-	 * @param l the light source direction
-	 * @param n the normal vector
+	 * @param light    the light source
+	 * @param l        the light source direction
+	 * @param n        the normal vector
 	 * @return the color of the point
 	 */
 	private Double3 softenShadows(GeoPoint geoPoint, LightSource light, Vector l, Vector n) {

@@ -15,18 +15,18 @@ import scene.Scene;
  * 
  * @author Dan
  */
-public class ShadowTests {	
+public class ShadowTests {
 	private static final int SHADOW_GIRD_SIZE = 4;
 	private Intersectable sphere = new Sphere(60d, new Point(0, 0, -200)) //
-	.setEmission(new Color(BLUE)) //
-	.setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(30));
+			.setEmission(new Color(BLUE)) //
+			.setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(30));
 	private Material trMaterial = new Material().setKd(0.5).setKs(0.5).setShininess(30);
-	
+
 	private Scene scene = new Scene("Test scene");
 	private Camera camera = new Camera(new Point(0, 0, 1000), new Vector(0, 0, -1), new Vector(0, 1, 0)) //
-	.setVPSize(200, 200).setVPDistance(1000) //
-	.setRayTracerBase(new RayTracerBasic(scene));
-	
+			.setVPSize(200, 200).setVPDistance(1000) //
+			.setRayTracerBase(new RayTracerBasic(scene));
+
 	/** Helper function for the tests in this module */
 	void sphereTriangleHelper(String pictName, Triangle triangle, Point spotLocation) {
 		scene.geometries.add(sphere, triangle.setEmission(new Color(BLUE)).setMaterial(trMaterial));

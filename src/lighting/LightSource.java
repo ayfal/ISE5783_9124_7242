@@ -36,7 +36,7 @@ public interface LightSource {
 	/**
 	 * calculates the shadow grid vectors of a point
 	 * 
-	 * @param gp point to calculate shadow grid vectors at
+	 * @param gp  point to calculate shadow grid vectors at
 	 * @param vTo direction of light
 	 * @return shadow grid vectors of a point
 	 */

@@ -112,13 +112,15 @@ public class PointLight extends Light implements LightSource {
 	}
 
 	Random rand = new Random();
+
 	/**
 	 * constructs a vector from the light source gird to a point on the geometry
+	 * 
 	 * @param vRight vector orthogonal to vTo
-	 * @param vUp vector orthogonal to vTo and vRight
-	 * @param i index of the row
-	 * @param j index of the column
-	 * @param gp the point on the geometry
+	 * @param vUp    vector orthogonal to vTo and vRight
+	 * @param i      index of the row
+	 * @param j      index of the column
+	 * @param gp     the point on the geometry
 	 * @return the vector from the light source gird to the point on the geometry
 	 */
 	private Vector constructShadowVector(Vector vRight, Vector vUp, int i, int j, GeoPoint gp) {
